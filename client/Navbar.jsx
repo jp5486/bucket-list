@@ -12,28 +12,21 @@ Navbar = React.createClass({
 		this.hidePage()
 	}, 
 
-	selectBucketList() {
-		rerturn (
-			$('.bucket-list-item')
-			)
-	},
-
 	renderHomePage() {
-		this.hidePage()
-  	
+		this.hidePage()	
 	},
 
 	render (){
 		return (
 			<nav className="navbar">	
-				<a href="#" onClick={this.renderHomePage.bind()}>Home</a>
-				<a href="#" onClick={this.renderEventsPage.bind()}>Bucket List</a>
-				<a href="#" onClick={this.renderEventsPage.bind()}>Events</a>
-				<a href="#" onClick={this.renderEventsPage.bind()}>Friends</a>
+				<div className="container">
+					<a href="#" onClick={this.renderHomePage}>Home</a>
+					<a href="#" onClick={this.renderEventsPage}>Bucket List</a>
+					<a href="#" onClick={this.renderEventsPage}>Events</a>
+					<a href="#" onClick={this.renderEventsPage}>Friends</a>
+				</div>
 			</nav>
 		)
 	}
 });
-					// <a href="#" onClick={this.alert.bind(this, 'Friends')}>Friends</a>
-
-
+				
