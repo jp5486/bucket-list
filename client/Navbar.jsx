@@ -4,7 +4,7 @@ Navbar = React.createClass({
 	alert (msg) { 
 		alert(msg);
 	},
-
+  
 	render (){
 		return (
 			<nav className="navbar">	
@@ -18,5 +18,4 @@ Navbar = React.createClass({
 		)
 	}
 });
-
 
