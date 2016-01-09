@@ -28,7 +28,7 @@ Bucketlist = React.createClass({
 
 	render() {
 		return (
-			<div className="container"> 
+			<div className="bucketlist"> 
 				<header>
 					<h1>Bucket List</h1>
 					<form className="new-bucketitem" onSubmit={this.handleSubmit}>
