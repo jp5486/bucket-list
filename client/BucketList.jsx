@@ -1,14 +1,14 @@
-Bucketlist = React.createClass({
+BucketList = React.createClass({
   mixins: [ReactMeteorData],
 
   getMeteorData() {
     return {
-      buecketitems: BucketItems.find({}, {sort: {createdAt: -1}}).fetch()
+      bucketitems: BucketItemsCollection.find({}, {sort: {createdAt: -1}}).fetch()
     }
   },
 
   renderBucketItems() {
-    return this.data.buecketitems.map((bucketitem) => {
+    return this.data.bucketitems.map((bucketitem) => {
       return <Bucketitem key={bucketitem._id} bucketitem={bucketitem} />;
     });
   },
