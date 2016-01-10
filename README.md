@@ -15,8 +15,8 @@
 
 ### Home Mock Up
 
-![Home mockup]('/Home.png' "Home mock up")
+![Home mockup](https://raw.githubusercontent.com/jp5486/bucket-list/development/public/Home.png "Home mock up")
 
 ### Event Mock Up
 
-![Events mockup]('/Events.png' "Events mock up")
+![Events mockup](https://raw.githubusercontent.com/jp5486/bucket-list/development/public/Events.png "Events mock up")
