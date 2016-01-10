@@ -5,5 +5,7 @@ Meteor.startup(function () {
 	// ReactDOM.render(<Quad2 />, document.getElementById("render-quad2"));
 	// ReactDOM.render(<Quad3 />, document.getElementById("render-quad3"));
 	// ReactDOM.render(<Quad4 />, document.getElementById("render-quad4"));
+  ReactDOM.render(<Events />, document.getElementById("render-quad1"));
+
 
 });

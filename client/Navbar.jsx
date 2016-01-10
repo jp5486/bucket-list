@@ -1,21 +1,32 @@
 
 Navbar = React.createClass({
+	
+	hidePage() {
+		ReactDOM.unmountComponentAtNode(document.getElementById("render-quad1"))
+		ReactDOM.unmountComponentAtNode(document.getElementById("render-quad2"))
+		ReactDOM.unmountComponentAtNode(document.getElementById("render-quad3"))
+		ReactDOM.unmountComponentAtNode(document.getElementById("render-quad4"))
 
-	alert (msg) { 
-		alert(msg);
 	},
-  
+	renderHomePage() {
+		this.hidePage();
+	},
+
+	renderEventsPage() {
+		this.hidePage();
+	}, 
+
 	render (){
 		return (
 			<nav className="navbar">	
-				<div className="container"> 
-					<a className="homebutton" href="#" onClick={this.alert.bind(this, 'Home')}>Home</a>
-					<a href="#" onClick={this.alert.bind(this, 'Bucket List')}>Bucket List</a>
-					<a href="#" onClick={this.alert.bind(this, 'Events')}>Events</a>
-					<a href="#" onClick={this.alert.bind(this, 'Friends')}>Friends</a>
-			  </div>
+				<div className="container">
+					<a href="#" onClick={this.renderHomePage}>Home</a>
+					<a href="#" onClick={this.renderHomePage}>Bucket List</a>
+					<a href="#" onClick={this.renderEventsPage}>Events</a>
+					<a href="#" onClick={this.renderEventsPage}>Friends</a>
+				</div>
 			</nav>
 		)
 	}
 });
-
+				

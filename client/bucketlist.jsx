@@ -11,7 +11,7 @@ Bucketlist = React.createClass({
 		return this.data.buecketitems.map((bucketitem) => {
 			return <Bucketitem key={bucketitem._id} bucketitem={bucketitem} />;
 		});
-	},	
+	},
 
 	handleSubmit(event) {
 		event.preventDefault();
@@ -28,7 +28,7 @@ Bucketlist = React.createClass({
 
 	render() {
 		return (
-			<div className="container"> 
+			<div className="bucketlist">
 				<header>
 					<h1>Bucket List</h1>
 					<form className="new-bucketitem" onSubmit={this.handleSubmit}>
@@ -41,8 +41,8 @@ Bucketlist = React.createClass({
 
 				<ul>
 					{this.renderBucketItems()}
-				</ul>	
+				</ul>
 			</div>
-			);	
+			);
 	}
 });
