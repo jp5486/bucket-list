@@ -1,10 +1,10 @@
-BucketItem = React.createClass({
+BucketItemReact = React.createClass({
 	propTypes: {
 		bucketitem: React.PropTypes.object.isRequired
 	},
 
 	toggleChecked() {
-		BucketItemsCollection.update(this.props.bucketitem._id, { 
+		BucketItemsCollection.update(this.props.bucketitem._id, {
 			$set: {checked: ! this.props.bucketitem.checked}
 		})
 	},
