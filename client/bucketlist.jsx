@@ -1,26 +1,28 @@
-Bucketlist = React.createClass({
+BucketList = React.createClass({
 	mixins: [ReactMeteorData],
 
+// grabs data from meteor database
 	getMeteorData() {
 		return {
-			buecketitems: BucketItems.find({}, {sort: {createdAt: -1}}).fetch()
+			allbucketitems: BucketItemsCollection.find({}, {sort: {createdAt: -1}}).fetch()
 		}
 	},
 
-	renderBucketItems() {
-		return this.data.buecketitems.map((bucketitem) => {
-			return <Bucketitem key={bucketitem._id} bucketitem={bucketitem} />;
-		});
+// for each item, return a self closing html task object to be rendered through react.
+	renderItems() {
+		return this.data.allbucketitems.map((bucketitemtobelisted) => {return <BucketItem key={bucketitemtobelisted._id} bucketitem={bucketitemtobelisted} />;
+		})
 	},
 
-	handleSubmit(event) {
+	handleSubmit(event){
 		event.preventDefault();
 
 		var text = React.findDOMNode(this.refs.textInput).value.trim();
 
-		BucketItems.insert({
+		BucketItemsCollection.insert({
 			text: text,
-			cratedAt: new Date()
+			cratedAt: new Date(),
+			checked: ""
 		});
 
 		React.findDOMNode(this.refs.textInput).value = ""
@@ -28,21 +30,23 @@ Bucketlist = React.createClass({
 
 	render() {
 		return (
-			<div className="bucketlist">
+			<div className="bucket-list"> 
 				<header>
 					<h1>Bucket List</h1>
-					<form className="new-bucketitem" onSubmit={this.handleSubmit}>
+					<form className="new-listitem" onSubmit={this.handleSubmit}>
 						<input
 							type="text"
 							ref="textInput"
-							placeholder="Type to add new item to your bucket list" />
+							placeholder="Type to add new items to your list." />
 					</form>
 				</header>
 
 				<ul>
-					{this.renderBucketItems()}
-				</ul>
+					{this.renderItems()}
+				</ul>	
 			</div>
-			);
+		);
 	}
-});
+
+
+})
