@@ -3,13 +3,13 @@ BucketList = React.createClass({
 
   getMeteorData() {
     return {
-      bucketitems: BucketItemsCollection.find({}, {sort: {createdAt: -1}}).fetch()
+      sortedBucketItems: BucketItemsCollection.find({}, {sort: {createdAt: -1}}).fetch()
     }
   },
 
   renderBucketItems() {
-    return this.data.bucketitems.map((bucketitem) => {
-      return <Bucketitem key={bucketitem._id} bucketitem={bucketitem} />;
+    return this.data.sortedBucketItems.map((bucketObject) => {
+      return <BucketItemReact key={bucketObject._id} bucketitem={bucketObject} />;
     });
   },
 
@@ -18,12 +18,12 @@ BucketList = React.createClass({
 
     var text = React.findDOMNode(this.refs.textInput).value.trim();
 
-    BucketItems.insert({
+    BucketItemsCollection.insert({
       text: text,
       cratedAt: new Date()
     });
 
-    React.findDOMNode(this.refs.textInput).value = ""
+    ReactDOM.findDOMNode(this.refs.textInput).value = ""
   },
 
   render() {
