@@ -8,20 +8,20 @@ Navbar = React.createClass({
 		ReactDOM.unmountComponentAtNode(document.getElementById("render-quad4"))
 	},
 
-	renderHomePage() {
+	renderHome () {
 		this.hidePage();
 	},
 
-  renderBucketListPage () {
+  renderBucketList () {
 		this.hidePage();
 		ReactDOM.render(<BucketList />, document.getElementById('render-quad1'));
   },
 
-	renderEventsPage() {
+	renderEvents () {
 		this.hidePage();
 	},
 
-	renderFriendsPage() {
+	renderFriends () {
 		this.hidePage();
 	},
 
@@ -29,12 +29,12 @@ Navbar = React.createClass({
 		return (
 			<nav className="navbar">
 				<div className="container">
-					<a href="#" onClick={this.renderHomePage}>Home</a>
+					<a href="#" onClick={this.renderHome}>Home</a>
 					
-					<a href="#" onClick={this.renderBucketListPage}>Bucket List</a>
+					<a href="#" onClick={this.renderBucketList}>Bucket List</a>
 					
-					<a href="#" onClick={this.renderEventsPage}>Events</a>
-					<a href="#" onClick={this.renderFriendsPage}>Friends</a>
+					<a href="#" onClick={this.renderEvents}>Events</a>
+					<a href="#" onClick={this.renderFriends}>Friends</a>
 				</div>
 			</nav>
 		)
