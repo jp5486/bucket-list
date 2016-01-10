@@ -1,52 +1,48 @@
 BucketList = React.createClass({
-	mixins: [ReactMeteorData],
+  mixins: [ReactMeteorData],
 
-// grabs data from meteor database
-	getMeteorData() {
-		return {
-			allbucketitems: BucketItemsCollection.find({}, {sort: {createdAt: -1}}).fetch()
-		}
-	},
+  getMeteorData() {
+    return {
+      bucketitems: BucketItemsCollection.find({}, {sort: {createdAt: -1}}).fetch()
+    }
+  },
 
-// for each item, return a self closing html task object to be rendered through react.
-	renderItems() {
-		return this.data.allbucketitems.map((bucketitemtobelisted) => {return <BucketItem key={bucketitemtobelisted._id} bucketitem={bucketitemtobelisted} />;
-		})
-	},
+  renderBucketItems() {
+    return this.data.bucketitems.map((bucketitem) => {
+      return <Bucketitem key={bucketitem._id} bucketitem={bucketitem} />;
+    });
+  },
 
-	handleSubmit(event){
-		event.preventDefault();
+  handleSubmit(event) {
+    event.preventDefault();
 
-		var text = React.findDOMNode(this.refs.textInput).value.trim();
+    var text = React.findDOMNode(this.refs.textInput).value.trim();
 
-		BucketItemsCollection.insert({
-			text: text,
-			cratedAt: new Date(),
-			checked: ""
-		});
+    BucketItems.insert({
+      text: text,
+      cratedAt: new Date()
+    });
 
-		React.findDOMNode(this.refs.textInput).value = ""
-	},
+    React.findDOMNode(this.refs.textInput).value = ""
+  },
 
-	render() {
-		return (
-			<div className="bucket-list"> 
-				<header>
-					<h1>Bucket List</h1>
-					<form className="new-listitem" onSubmit={this.handleSubmit}>
-						<input
-							type="text"
-							ref="textInput"
-							placeholder="Type to add new items to your list." />
-					</form>
-				</header>
+  render() {
+    return (
+      <div className="bucketlist">
+        <header>
+          <h1>Bucket List</h1>
+          <form className="new-bucketitem" onSubmit={this.handleSubmit}>
+            <input
+              type="text"
+              ref="textInput"
+              placeholder="Type to add new item to your bucket list" />
+          </form>
+        </header>
 
-				<ul>
-					{this.renderItems()}
-				</ul>	
-			</div>
-		);
-	}
-
-
-})
+        <ul>
+          {this.renderBucketItems()}
+        </ul>
+      </div>
+      );
+  }
+});
