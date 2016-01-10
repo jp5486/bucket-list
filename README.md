@@ -15,8 +15,8 @@
 
 ### Home Mock Up
 
-![Home mockup]('/public/Home.png' "Home mock up")
+![Home mockup]('/Home.png' "Home mock up")
 
 ### Event Mock Up
 
-![Events mockup]('/public/Events.png' "Events mock up")
+![Events mockup]('/Events.png' "Events mock up")
