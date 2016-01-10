@@ -8,3 +8,15 @@
 ####Issac Lee - https://github.com/SynnisterDomini
 
 ####Kai Huang - https://github.com/huangkc
+
+
+
+## Mock Ups --------------------------
+
+### Home Mock Up
+
+![Home mockup]('/public/Home.png' "Home mock up")
+
+### Event Mock Up
+
+![Events mockup]('/public/Events.png' "Events mock up")
