@@ -8,8 +8,8 @@ Events = React.createClass({
   },
 
   renderCategories() {
-    return this.data.sortedCategories.map((object) => {
-        return <CategoryReact key={object._id} thingWithTitle={object} />;
+    return this.data.sortedCategories.map((categoryobject) => {
+        return <CategoryReact key={categoryobject._id} thingWithTitle={categoryobject} />;
     });
   },
 
@@ -20,13 +20,15 @@ Events = React.createClass({
     return (
       <div className= "Events">
         <ul>
-          <h2 className="Category"> {this.renderCategories()} </h2>
+          <h3 className="Category"> {this.renderCategories()} </h3>
 
         </ul>
       </div>
     )
   }
 });
+
+
 
 
 
