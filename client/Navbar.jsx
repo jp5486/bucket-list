@@ -10,6 +10,7 @@ Navbar = React.createClass({
 	},
 	renderHomePage() {
 		this.hidePage();
+		console.log("abc")
 	},
 
 	renderEventsPage() {
