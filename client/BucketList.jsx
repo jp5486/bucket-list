@@ -21,8 +21,11 @@ BucketList = React.createClass({
 
 		BucketItemsCollection.insert({
 			text: text,
-			cratedAt: new Date()
+			cratedAt: new Date(),
+			checked: ""
 		});
+
+		React.findDOMNode(this.refs.textInput).value = ""
 	},
 
 	render() {
