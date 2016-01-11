@@ -11,11 +11,20 @@ BucketItemReact = React.createClass({
 	showBucketItemDetails(){
 		var currentItem = BucketItemsCollection.find(this.bucketitem._id)
 
+	},
 
+	updateThisBucketItem(event) {
+		event.preventDefault();
+		var newtext = this.state.text.trim();
+		BucketItemsCollection.update(this.props.bucketitem._id, {text: newtext})
 	},
 
 	deleteThisBucketItem() {
 		BucketItemsCollection.remove(this.props.bucketitem._id);
+	},
+
+	handleTextChange(event){
+		this.setState({text: event.target.value})
 	},
 
 	render() {
@@ -33,6 +42,18 @@ BucketItemReact = React.createClass({
 					onClick={this.toggleChecked} />
 
 				<span className="text">{this.props.bucketitem.text}</span>
+
+			<form className="editform" onSubmit={this.updateThisBucketItem}>
+				<input
+					type="text" 
+					name="updatedText"
+					placeholder="Please don't leave blank"
+					onChange={this.handleTextChange}
+					defaultValue={this.props.bucketitem.text}
+				/>
+				<input type="submit" value="Update This Item"/>
+			</form>
+				
 			</li>
 		);
 	}
