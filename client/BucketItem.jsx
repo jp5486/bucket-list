@@ -19,7 +19,6 @@ BucketItemReact = React.createClass({
 	},
 	showBucketItemDetails(){
 		var currentItem = BucketItemsCollection.find(this.bucketitem._id)
-
 	},
 
 	selectThisListItem(){
