@@ -6,9 +6,15 @@ BucketItemReact = React.createClass({
 
 	getInitialState() {
 		return {
-			text: this.props.bucketitem.title,
+			title: this.props.bucketitem.title,
+			description: this.props.bucketitem.description,
+			tags: this.props.bucketitem.tags,
+			category: this.props.bucketitem.category,
+			address: this.props.bucketitem.address,
+			rating: this.props.bucketitem.rating,
 			editing: false,
-			showDescription: false
+			showDescription: false,
+			showAll: false
 		};
 	},
 
@@ -17,6 +23,15 @@ BucketItemReact = React.createClass({
 			$set: {checked: ! this.props.bucketitem.checked}
 		})
 	},
+
+	toggleShowAll(event) {
+		this.setState({showAll: !this.state.showAll})
+	},
+
+	toggleDescription(event){
+		this.setState({showDescription: !this.state.showDescription})
+	},
+
 	showBucketItemDetails(){
 		var currentItem = BucketItemsCollection.find(this.bucketitem._id)
 	},
@@ -27,16 +42,48 @@ BucketItemReact = React.createClass({
 
 	updateThisBucketItem(event) {
 		event.preventDefault();
-		var newtitle = this.state.text.trim();
-		BucketItemsCollection.update(this.props.bucketitem._id, {title: newtitle})
+		var newtitle = this.state.title.trim();
+		var newdescription = this.state.description.trim();
+		var newtags = this.state.tags.trim();
+		var newcategory = this.state.category.trim();
+		var newaddress = this.state.address.trim();
+		var newrating = this.state.rating.trim();
+		BucketItemsCollection.update(this.props.bucketitem._id, {
+			title: newtitle,
+			description: newdescription,
+			tags: newtags,
+			category: newcategory,
+			address: newaddress,
+			rating: newrating,
+		})
 	},
 
 	deleteThisBucketItem() {
 		BucketItemsCollection.remove(this.props.bucketitem._id);
 	},
 
-	handleTextChange(event){
-		this.setState({text: event.target.value})
+	handleTitleChange(event){
+		this.setState({title: event.target.value})
+	},
+
+	handleDescriptionChange(event){
+		this.setState({description: event.target.value})
+	},
+
+	handleTagsChange(event){
+		this.setState({tags: event.target.value})
+	},
+
+	handleCategoryChange(event){
+		this.setState({category: event.target.value})
+	},
+
+	handleAddressChange(event){
+		this.setState({address: event.target.value})
+	},
+
+	handleRatingChange(event){
+		this.setState({rating: event.target.value})
 	},
 
 	openForm(event){
@@ -47,9 +94,9 @@ BucketItemReact = React.createClass({
 		this.setState({editing: false})
 	},
 
-	toggleDescription(event){
-		this.setState({showDescription: !this.state.showDescription})
-	},
+	
+
+
 
 	render() {
 		const itemClassName = this.props.bucketitem.checked ? "checked" : "";
@@ -60,30 +107,86 @@ BucketItemReact = React.createClass({
 				</button>
 				<button onClick={this.openForm}>Edit this item</button>
 
-				<input
-					type="checkbox"
-					// readOnly={true}
-					checked={this.props.bucketitem.checked}
-					onClick={this.toggleChecked} />
 				<div onClick={this.toggleDescription}>	
-				<span className="title">{this.props.bucketitem.title}</span>
+				<p className="title">{this.props.bucketitem.title}</p>
 				</div>
-				{(this.state.showDescription == true)
-				? 
-				<ul>
-					<li>{this.props.bucketitem.description}</li>
-				</ul>
-				: null
+				{(this.state.showDescription == true && this.state.showAll == true)
+					? 
+						<div>
+							<button onClick={this.toggleShowAll}>Show All Details</button>
+							<ul>
+								<li className="description">{this.props.bucketitem.description}</li>
+								<li className="tags">{this.props.bucketitem.tags}</li>
+								<li className="category">{this.props.bucketitem.category}</li>
+								<li className="address">{this.props.bucketitem.address}</li>
+								<li className="rating">{this.props.bucketitem.rating}</li>
+							</ul>
+						</div>
+					: 
+						<div>
+							<button onClick={this.toggleShowAll}>Show All Details</button>
+							<ul>
+								<li>{this.props.bucketitem.description}</li>
+							</ul>
+						</div>
+
+
 				}
 				{(this.state.editing == true)
 					? <form className="editform" onSubmit={this.updateThisBucketItem}>
+					<p> Title:
 						<input
 							type="text" 
 							name="updatedText"
 							placeholder="Please don't leave blank"
-							onChange={this.handleTextChange}
+							onChange={this.handleTitleChange}
 							defaultValue={this.props.bucketitem.title}
 						/>
+					</p>
+	        <p>  
+	          Description: 
+            <input
+              type="text"
+              ref="description"
+							onChange={this.handleDescriptionChange}
+							defaultValue={this.props.bucketitem.description}
+              placeholder="Define Description Here" />
+
+          </p>
+          <p>
+          	Tags: 
+            <input
+              type="text"
+              ref="tags"
+              onChange={this.handleTagsChange}
+							defaultValue={this.props.bucketitem.tags}
+              placeholder="Define tags here" />
+          </p>
+            <p>Category: 
+            <input
+              type="text"
+              ref="category"
+              onChange={this.handleCategoryChange}
+							defaultValue={this.props.bucketitem.category}
+              placeholder="List Category Here" />
+          </p>
+            <p>Address: 
+            <input
+              type="text"
+              ref="address"
+              onChange={this.handleAddressChange}
+							defaultValue={this.props.bucketitem.address}
+              placeholder="Type Address Here" />
+          </p>
+            <p>Rating: 
+            <input
+              type="text"
+              ref="rating"
+              onChange={this.handleRatingChange}
+							defaultValue={this.props.bucketitem.rating}
+              placeholder="Rate the item" />
+          </p>
+
 						<input type="submit" value="Update This Item"/>
 						<button className="stopediting" onClick={this.closeForm}>Close Edit Form</button>	
 					</form>

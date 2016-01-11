@@ -48,7 +48,7 @@ BucketList = React.createClass({
       createdAt: new Date()
     });
 
-    clearForm();
+    this.clearForm();
     this.setState({addingItem: false})
   },
 
