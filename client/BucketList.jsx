@@ -16,11 +16,11 @@ BucketList = React.createClass({
   handleSubmit(event) {
     event.preventDefault();
 
-    var text = React.findDOMNode(this.refs.textInput).value.trim();
+    var title = ReactDOM.findDOMNode(this.refs.textInput).value.trim();
 
     BucketItemsCollection.insert({
-      text: text,
-      cratedAt: new Date()
+      title: title,
+      createdAt: new Date()
     });
 
     ReactDOM.findDOMNode(this.refs.textInput).value = ""
@@ -36,6 +36,9 @@ BucketList = React.createClass({
               type="text"
               ref="textInput"
               placeholder="Type to add new item to your bucket list" />
+              <input
+                type="submit"
+                value="submit"/>
           </form>
         </header>
 

@@ -6,7 +6,7 @@ BucketItemReact = React.createClass({
 
 	getInitialState() {
 		return {
-			text: this.props.bucketitem.text,
+			text: this.props.bucketitem.title,
 			editing: false
 		};
 	},
@@ -27,9 +27,8 @@ BucketItemReact = React.createClass({
 
 	updateThisBucketItem(event) {
 		event.preventDefault();
-		var newtext = this.state.text.trim();
-		BucketItemsCollection.update(this.props.bucketitem._id, {text: newtext})
-		this.setState({editing: false})
+		var newtitle = this.state.text.trim();
+		BucketItemsCollection.update(this.props.bucketitem._id, {title: newtitle})
 	},
 
 	deleteThisBucketItem() {
@@ -62,7 +61,7 @@ BucketItemReact = React.createClass({
 					// readOnly={true}
 					checked={this.props.bucketitem.checked}
 					onClick={this.toggleChecked} />
-				<span className="text">{this.props.bucketitem.text}</span>
+				<span className="text">{this.props.bucketitem.title}</span>
 				{(this.state.editing == true)
 					? <form className="editform" onSubmit={this.updateThisBucketItem}>
 						<input
@@ -70,7 +69,7 @@ BucketItemReact = React.createClass({
 							name="updatedText"
 							placeholder="Please don't leave blank"
 							onChange={this.handleTextChange}
-							defaultValue={this.props.bucketitem.text}
+							defaultValue={this.props.bucketitem.title}
 						/>
 						<input type="submit" value="Update This Item"/>
 						<button className="stopediting" onClick={this.closeForm}>Close Edit Form</button>	
