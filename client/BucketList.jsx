@@ -22,14 +22,30 @@ BucketList = React.createClass({
   handleSubmit(event) {
     event.preventDefault();
 
-    var title = ReactDOM.findDOMNode(this.refs.textInput).value.trim();
+    var title = ReactDOM.findDOMNode(this.refs.title).value.trim();
+    var description = ReactDOM.findDOMNode(this.refs.description).value.trim();
+    var tags = ReactDOM.findDOMNode(this.refs.tags).value.trim();
+    var category = ReactDOM.findDOMNode(this.refs.category).value.trim();
+    var address = ReactDOM.findDOMNode(this.refs.address).value.trim();
+    var rating = ReactDOM.findDOMNode(this.refs.rating).value.trim();
 
     BucketItemsCollection.insert({
       title: title,
+      description: description,
+      tags: tags,
+      category: category,
+      address: address,
+      rating: rating,
       createdAt: new Date()
     });
 
-    ReactDOM.findDOMNode(this.refs.textInput).value = ""
+    ReactDOM.findDOMNode(this.refs.title).value = ""
+    ReactDOM.findDOMNode(this.refs.description).value = ""
+    ReactDOM.findDOMNode(this.refs.tags).value = ""
+    ReactDOM.findDOMNode(this.refs.category).value = ""
+    ReactDOM.findDOMNode(this.refs.rating).value = ""
+    ReactDOM.findDOMNode(this.refs.address).value = ""
+
     this.setState({addingItem: false})
   },
 
@@ -48,13 +64,44 @@ BucketList = React.createClass({
           {this.state.addingItem == true
           ? <form className="new-bucketitem" onSubmit={this.handleSubmit}>
           
-          <p>List Title: 
+          <p>Title: 
             <input
               type="text"
-              ref="textInput"
+              ref="title"
               placeholder="Type to add new item to your bucket list" />
           </p>
-              <input
+
+          <p>Description: 
+            <input
+              type="text"
+              ref="description"
+              placeholder="Type to add new item to your bucket list" />
+          </p>
+          <p>Tags: 
+            <input
+              type="text"
+              ref="tags"
+              placeholder="Type to add new item to your bucket list" />
+          </p>
+            <p>Category: 
+            <input
+              type="text"
+              ref="category"
+              placeholder="Type to add new item to your bucket list" />
+          </p>
+            <p>Address: 
+            <input
+              type="text"
+              ref="address"
+              placeholder="Type to add new item to your bucket list" />
+          </p>
+            <p>Rating: 
+            <input
+              type="text"
+              ref="rating"
+              placeholder="Type to add new item to your bucket list" />
+          </p>
+          <input
                 type="submit"
                 value="submit"/>
           </form>

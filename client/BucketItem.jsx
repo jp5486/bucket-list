@@ -7,7 +7,8 @@ BucketItemReact = React.createClass({
 	getInitialState() {
 		return {
 			text: this.props.bucketitem.title,
-			editing: false
+			editing: false,
+			showDescription: false
 		};
 	},
 
@@ -47,6 +48,10 @@ BucketItemReact = React.createClass({
 		this.setState({editing: false})
 	},
 
+	toggleDescription(event){
+		this.setState({showDescription: !this.state.showDescription})
+	},
+
 	render() {
 		const itemClassName = this.props.bucketitem.checked ? "checked" : "";
 		return (
@@ -61,7 +66,17 @@ BucketItemReact = React.createClass({
 					// readOnly={true}
 					checked={this.props.bucketitem.checked}
 					onClick={this.toggleChecked} />
-				<span className="text">{this.props.bucketitem.title}</span>
+				<div onClick={this.toggleDescription}>	
+				<span className="title">{this.props.bucketitem.title}</span>
+				</div>
+				{(this.state.showDescription == true)
+
+				? 
+				<ul>
+					<li>{this.props.bucketitem.description}</li>
+				</ul>
+				: null
+				}
 				{(this.state.editing == true)
 					? <form className="editform" onSubmit={this.updateThisBucketItem}>
 						<input
