@@ -1,3 +1,19 @@
+EditForm = React.createClass({
+	handleSubmit: function(e) {
+		e.preventDefault();
+	},
+	render () {
+		return (
+			<form>
+				<input
+				 ref="text"
+         placeholder="edit"/>
+			</form>
+		)
+	}
+})
+
+
 BucketItemReact = React.createClass({
 	propTypes: {
 		bucketitem: React.PropTypes.object.isRequired
@@ -13,6 +29,15 @@ BucketItemReact = React.createClass({
 		BucketItemsCollection.remove(this.props.bucketitem._id);
 	},
 
+	renderDetails () {
+		var targetItem = this.props.bucketitem
+		console.log(targetItem.text);
+		ReactDOM.unmountComponentAtNode(document.getElementById("render-quad1"))
+		ReactDOM.render(<EditForm />, document.getElementById('render-quad1'));
+    
+	  
+	},
+
 	render() {
 		const itemClassName = this.props.bucketitem.checked ? "checked" : "";
 		return (
@@ -23,11 +48,13 @@ BucketItemReact = React.createClass({
 
 				<input
 					type="checkbox"
-					readOnly={true}
+					// readOnly={true}
 					checked={this.props.bucketitem.checked}
 					onClick={this.toggleChecked} />
 
-				<span className="text">{this.props.bucketitem.text}</span>
+				<span className="text" onClick={this.renderDetails}>{this.props.bucketitem.text}</span>
+				<div id="details"></div>
+ 
 			</li>
 		);
 	}
