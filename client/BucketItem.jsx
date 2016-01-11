@@ -70,7 +70,6 @@ BucketItemReact = React.createClass({
 				<span className="title">{this.props.bucketitem.title}</span>
 				</div>
 				{(this.state.showDescription == true)
-
 				? 
 				<ul>
 					<li>{this.props.bucketitem.description}</li>
