@@ -19,6 +19,15 @@ BucketList = React.createClass({
     });
   },
 
+  clearForm(){
+    ReactDOM.findDOMNode(this.refs.title).value = ""
+    ReactDOM.findDOMNode(this.refs.description).value = ""
+    ReactDOM.findDOMNode(this.refs.tags).value = ""
+    ReactDOM.findDOMNode(this.refs.category).value = ""
+    ReactDOM.findDOMNode(this.refs.rating).value = ""
+    ReactDOM.findDOMNode(this.refs.address).value = ""
+  },
+
   handleSubmit(event) {
     event.preventDefault();
 
@@ -39,13 +48,7 @@ BucketList = React.createClass({
       createdAt: new Date()
     });
 
-    ReactDOM.findDOMNode(this.refs.title).value = ""
-    ReactDOM.findDOMNode(this.refs.description).value = ""
-    ReactDOM.findDOMNode(this.refs.tags).value = ""
-    ReactDOM.findDOMNode(this.refs.category).value = ""
-    ReactDOM.findDOMNode(this.refs.rating).value = ""
-    ReactDOM.findDOMNode(this.refs.address).value = ""
-
+    clearForm();
     this.setState({addingItem: false})
   },
 
