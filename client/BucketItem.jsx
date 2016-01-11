@@ -8,6 +8,11 @@ BucketItemReact = React.createClass({
 			$set: {checked: ! this.props.bucketitem.checked}
 		})
 	},
+	showBucketItemDetails(){
+		var currentItem = BucketItemsCollection.find(this.bucketitem._id)
+
+
+	},
 
 	deleteThisBucketItem() {
 		BucketItemsCollection.remove(this.props.bucketitem._id);
