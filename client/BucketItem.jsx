@@ -6,8 +6,9 @@ BucketItemReact = React.createClass({
 
 	getInitialState() {
 		return {
-			text: this.props.bucketitem.text,
-			editing: false
+			text: this.props.bucketitem.title,
+			editing: false,
+			showDescription: false
 		};
 	},
 
@@ -18,7 +19,6 @@ BucketItemReact = React.createClass({
 	},
 	showBucketItemDetails(){
 		var currentItem = BucketItemsCollection.find(this.bucketitem._id)
-
 	},
 
 	selectThisListItem(){
@@ -27,9 +27,8 @@ BucketItemReact = React.createClass({
 
 	updateThisBucketItem(event) {
 		event.preventDefault();
-		var newtext = this.state.text.trim();
-		BucketItemsCollection.update(this.props.bucketitem._id, {text: newtext})
-		this.setState({editing: false})
+		var newtitle = this.state.text.trim();
+		BucketItemsCollection.update(this.props.bucketitem._id, {title: newtitle})
 	},
 
 	deleteThisBucketItem() {
@@ -48,6 +47,10 @@ BucketItemReact = React.createClass({
 		this.setState({editing: false})
 	},
 
+	toggleDescription(event){
+		this.setState({showDescription: !this.state.showDescription})
+	},
+
 	render() {
 		const itemClassName = this.props.bucketitem.checked ? "checked" : "";
 		return (
@@ -59,11 +62,19 @@ BucketItemReact = React.createClass({
 
 				<input
 					type="checkbox"
-					readOnly={true}
+					// readOnly={true}
 					checked={this.props.bucketitem.checked}
 					onClick={this.toggleChecked} />
-
-				<span className="text">{this.props.bucketitem.text}</span>
+				<div onClick={this.toggleDescription}>	
+				<span className="title">{this.props.bucketitem.title}</span>
+				</div>
+				{(this.state.showDescription == true)
+				? 
+				<ul>
+					<li>{this.props.bucketitem.description}</li>
+				</ul>
+				: null
+				}
 				{(this.state.editing == true)
 					? <form className="editform" onSubmit={this.updateThisBucketItem}>
 						<input
@@ -71,7 +82,7 @@ BucketItemReact = React.createClass({
 							name="updatedText"
 							placeholder="Please don't leave blank"
 							onChange={this.handleTextChange}
-							defaultValue={this.props.bucketitem.text}
+							defaultValue={this.props.bucketitem.title}
 						/>
 						<input type="submit" value="Update This Item"/>
 						<button className="stopediting" onClick={this.closeForm}>Close Edit Form</button>	
