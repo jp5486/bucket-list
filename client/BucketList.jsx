@@ -7,6 +7,12 @@ BucketList = React.createClass({
     }
   },
 
+  getInitialState(){
+    return {
+      addingItem: false
+    }
+  },
+
   renderBucketItems() {
     return this.data.sortedBucketItems.map((bucketObject) => {
       return <BucketItemReact key={bucketObject._id} bucketitem={bucketObject} />;
@@ -24,6 +30,13 @@ BucketList = React.createClass({
     });
 
     ReactDOM.findDOMNode(this.refs.textInput).value = ""
+    this.setState({addingItem: false})
+  },
+
+  addingNewItem(){
+    this.setState({
+      addingItem: true
+    })
   },
 
   render() {
@@ -31,15 +44,22 @@ BucketList = React.createClass({
       <div className="bucketlist">
         <header>
           <h1>Bucket List</h1>
-          <form className="new-bucketitem" onSubmit={this.handleSubmit}>
+          <button onClick={this.addingNewItem}>Add a new item!</button>
+          {this.state.addingItem == true
+          ? <form className="new-bucketitem" onSubmit={this.handleSubmit}>
+          
+          <p>List Title: 
             <input
               type="text"
               ref="textInput"
               placeholder="Type to add new item to your bucket list" />
+          </p>
               <input
                 type="submit"
                 value="submit"/>
           </form>
+          : null
+          }
         </header>
 
         <ul>
