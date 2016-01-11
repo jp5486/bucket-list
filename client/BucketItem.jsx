@@ -110,27 +110,32 @@ BucketItemReact = React.createClass({
 				<div onClick={this.toggleDescription}>	
 				<p className="title">{this.props.bucketitem.title}</p>
 				</div>
+
+				{(this.state.showDescription == true)
+				?
+					<div>
+						<button onClick={this.toggleShowAll}>Show All Details</button>
+						<ul>
+							<li className="description">{this.props.bucketitem.description}</li>
+						</ul>
+					</div>
+				:null
+				}
+
 				{(this.state.showDescription == true && this.state.showAll == true)
 					? 
 						<div>
-							<button onClick={this.toggleShowAll}>Show All Details</button>
 							<ul>
-								<li className="description">{this.props.bucketitem.description}</li>
+								
 								<li className="tags">{this.props.bucketitem.tags}</li>
 								<li className="category">{this.props.bucketitem.category}</li>
 								<li className="address">{this.props.bucketitem.address}</li>
 								<li className="rating">{this.props.bucketitem.rating}</li>
 							</ul>
 						</div>
-					: 
-						<div>
-							<button onClick={this.toggleShowAll}>Show All Details</button>
-							<ul>
-								<li>{this.props.bucketitem.description}</li>
-							</ul>
-						</div>
-
-
+					
+					:	null
+					
 				}
 				{(this.state.editing == true)
 					? <form className="editform" onSubmit={this.updateThisBucketItem}>
