@@ -1,28 +1,18 @@
-// var categorySeeds =[
-//   {
-//     "category" : "Travel",
-//     "items" : {
-//         "title":  "Take a cruise",
-//       },
-//       {
-//         "title":  "Fly a plane",
-//       }
-//   },
-//   {
-//     "category" : "Tourist",
-//     "items" : {
-//         "title":  "See the Golden Gate bridge",
-//         "description": "Take a walk down the Golden Gate Bridge in San Francisco",
-//         image: 'golden-gate-bridge.jpg'
-//       },
-//       {
-//         "title" :  "See the Bay Bridge",
-//         "description": "Drive into San Francisco by taking the newly created Bay Bridge",
-//         image: "bay-bridge.jpg"
-//       },
-//       {
-//         "title" : "See Pier 39"
-//         "description" : "Visit the Sea lions"
-//       }
-//   }
-// ]
+BucketItemsCollection = new Mongo.Collection("bucketitems");
+CategoriesCollection = new Mongo.Collection("categories")
+
+Meteor.startup(function () {
+  if (CategoriesCollection.find().count() == 0) {
+    CategoriesCollection.insert({title: "Education"});
+    CategoriesCollection.insert({title: "Food"});
+    CategoriesCollection.insert({title: "Local"});
+    CategoriesCollection.insert({title: "Outdoors"});
+    CategoriesCollection.insert({title: "Sports"});
+    CategoriesCollection.insert({title: "Travel"});
+    CategoriesCollection.insert({title: "Tourist"});
+  } else if (BucketItemsCollection.find().count() == 0) {
+    BucketItemsCollection.insert({text: "Run a Marathon", category: "Sports"});
+    BucketItemsCollection.insert({text: "Build an app in Meteor", category: "Education"});
+    BucketItemsCollection.insert({text: "Finish a coding bootcamp", category: "Education"});
+  }
+});
