@@ -1,19 +1,3 @@
-EditForm = React.createClass({
-	handleSubmit: function(e) {
-		e.preventDefault();
-	},
-	render () {
-		return (
-			<form>
-				<input
-				 ref="text"
-         placeholder="edit"/>
-			</form>
-		)
-	}
-})
-
-
 BucketItemReact = React.createClass({
 
 	propTypes: {
