@@ -1,6 +1,3 @@
-BucketItemsCollection = new Mongo.Collection("bucketitems");
-CategoriesCollection = new Mongo.Collection("categories")
-
 Meteor.startup(function () {
 	ReactDOM.render(<Navbar />, document.getElementById("render-navbar"));
   ReactDOM.render(<Login />, document.getElementById("render-login"));
