@@ -21,3 +21,14 @@
 //     Messages.find({roomId: roomId})
 //   ];
 // });
+
+
+// Meteor.publish("categories", function () {
+//   return categories.find();
+// });
+// Meteor.publish("bucketitems", function () {
+//   return bucketitems.find();
+// });
+// Meteor.publish("userData", function () {
+//   return users.find();
+// });
