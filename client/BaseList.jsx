@@ -3,7 +3,7 @@ BucketList = React.createClass({
 
   getMeteorData() {
     return {
-      sortedBucketItems: BucketItemsCollection.find({}, {sort: {createdAt: -1}}).fetch()
+      sortedBucketItems: BucketItemsCollection.find({}, {sort: {createdAt: -1}}).fetch(),
     }
   },
 

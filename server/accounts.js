@@ -27,3 +27,10 @@
 //   clientId: "527151180636-b25gao2ers5ae64uekr6rufmv4h739il.apps.googleusercontent.com",
 //   secret: "MMF_ljvQ3A4zQqFgfmAZRa7i"
 // });
+
+Accounts.onCreateUser(function(options, user) {
+  user.personalItems = {};
+  if (options.profile)
+    user.profile = options.profile;
+  return user;
+});
