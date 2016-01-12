@@ -13,7 +13,6 @@ Events = React.createClass({
     });
   },
 
-<<<<<<< HEAD
   makeAjaxCall() {
     $.ajax({
       type: 'GET' ,
@@ -31,8 +30,7 @@ Events = React.createClass({
 
 
 
-=======
->>>>>>> 10b312cd591da07283b16c223b7c15ac6f5a3a72
+
   render (){
     return (   
         <div className= "Events">
