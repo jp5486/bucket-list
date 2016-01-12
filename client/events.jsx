@@ -6,29 +6,23 @@ Events = React.createClass({
       sortedCategories: CategoriesCollection.find({}, {sort: {title: 1}}).fetch()
     }
   },
-
+  
   renderCategories() {
     return this.data.sortedCategories.map((categoryobject) => {
-        return <CategoryReact key={categoryobject._id} thingWithTitle={categoryobject} />;
+        return <EventCategoryReact key={categoryobject._id} thingWithTitle={categoryobject} />;
     });
   },
 
-
-
-
   render (){
-    return (
-      <div className= "Events">
-        <ul>
-          <h3 className="Category"> {this.renderCategories()} </h3>
-
-        </ul>
-      </div>
-    )
+    return (   
+        <div className= "Events">
+          <ul>
+            <h3 className="Category"> {this.renderCategories()} 
+            </h3>
+          </ul>
+        </div> 
+    );
   }
 });
-
-
-
 
 
