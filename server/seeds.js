@@ -11,9 +11,41 @@ Meteor.startup(function () {
     CategoriesCollection.insert({title: "Travel"});
     CategoriesCollection.insert({title: "Tourist"});
   };
-  if (BucketItemsCollection.find().count() == 0) {
-    BucketItemsCollection.insert({title: "Run a Marathon", category: "Sports"});
-    BucketItemsCollection.insert({title: "Build an app in Meteor", category: "Education"});
-    BucketItemsCollection.insert({title: "Finish a coding bootcamp", category: "Education"});
-  }
+  // if (BucketItemsCollection.find().count() == 0) {
+  //   BucketItemsCollection.insert(
+  //   {
+  //     title: "Run a Marathon",
+  //     category: "Sports",
+  //     description: "",
+  //     tags: [],
+  //     address: "",
+  //     rating: "",
+  //     users: {},
+  //     editing: false,
+  //     showDescription: false,
+  //     showAll: false
+  //   }
+  //   );
+  //   BucketItemsCollection.insert({
+  //     title: "Build an app in Meteor",
+  //     category: "Education",
+  //     description: "",
+  //     tags: [],
+  //     address: "",
+  //     rating: "",
+  //     editing: false,
+  //     showDescription: false,
+  //     showAll: false
+  //   });
+  //   BucketItemsCollection.insert({
+  //     title: "Finish a coding bootcamp",
+  //     category: "Education",
+  //     description: "",
+  //     tags: [],
+  //     address: "",
+  //     editing: false,
+  //     showDescription: false,
+  //     showAll: false
+  //   });
+  // }
 });

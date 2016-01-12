@@ -48,14 +48,16 @@ BucketItemReact = React.createClass({
 		var newcategory = this.state.category.trim();
 		var newaddress = this.state.address.trim();
 		var newrating = this.state.rating.trim();
-		BucketItemsCollection.update(this.props.bucketitem._id, {
-			title: newtitle,
-			description: newdescription,
-			tags: newtags,
-			category: newcategory,
-			address: newaddress,
-			rating: newrating,
-		})
+		BucketItemsCollection.update(this.props.bucketitem._id, {$set : {
+					title: newtitle,
+					description: newdescription,
+					tags: newtags,
+					category: newcategory,
+					address: newaddress,
+					rating: newrating,
+				}
+			}
+		)
 	},
 
 	deleteThisBucketItem() {
@@ -94,7 +96,7 @@ BucketItemReact = React.createClass({
 		this.setState({editing: false})
 	},
 
-	
+
 
 
 
@@ -107,7 +109,7 @@ BucketItemReact = React.createClass({
 				</button>
 				<button onClick={this.openForm}>Edit this item</button>
 
-				<div onClick={this.toggleDescription}>	
+				<div onClick={this.toggleDescription}>
 				<p className="title">{this.props.bucketitem.title}</p>
 				</div>
 
@@ -123,33 +125,33 @@ BucketItemReact = React.createClass({
 				}
 
 				{(this.state.showDescription == true && this.state.showAll == true)
-					? 
+					?
 						<div>
 							<ul>
-								
+
 								<li className="tags">{this.props.bucketitem.tags}</li>
 								<li className="category">{this.props.bucketitem.category}</li>
 								<li className="address">{this.props.bucketitem.address}</li>
 								<li className="rating">{this.props.bucketitem.rating}</li>
 							</ul>
 						</div>
-					
+
 					:	null
-					
+
 				}
 				{(this.state.editing == true)
 					? <form className="editform" onSubmit={this.updateThisBucketItem}>
 					<p> Title:
 						<input
-							type="text" 
+							type="text"
 							name="updatedText"
 							placeholder="Please don't leave blank"
 							onChange={this.handleTitleChange}
 							defaultValue={this.props.bucketitem.title}
 						/>
 					</p>
-	        <p>  
-	          Description: 
+	        <p>
+	          Description:
             <input
               type="text"
               ref="description"
@@ -159,7 +161,7 @@ BucketItemReact = React.createClass({
 
           </p>
           <p>
-          	Tags: 
+          	Tags:
             <input
               type="text"
               ref="tags"
@@ -167,15 +169,24 @@ BucketItemReact = React.createClass({
 							defaultValue={this.props.bucketitem.tags}
               placeholder="Define tags here" />
           </p>
-            <p>Category: 
-            <input
-              type="text"
-              ref="category"
-              onChange={this.handleCategoryChange}
-							defaultValue={this.props.bucketitem.category}
-              placeholder="List Category Here" />
+           <p>Category:
+					   <select
+						   ref="category"
+               onChange={this.handleCategoryChange}
+							 defaultValue={this.props.bucketitem.category}
+						   className="education-form"
+						   id="education-select">
+						     <option value="Education">Education</option>
+						     <option value="Food">Food</option>
+						     <option value="Local">Local</option>
+						     <option value="Outdoors">Outdoors</option>
+						     <option value="Sports">Sports</option>
+						     <option value="Tourist">Tourist</option>
+						     <option value="Travel">Travel</option>
+						  </select>
+
           </p>
-            <p>Address: 
+            <p>Address:
             <input
               type="text"
               ref="address"
@@ -183,7 +194,7 @@ BucketItemReact = React.createClass({
 							defaultValue={this.props.bucketitem.address}
               placeholder="Type Address Here" />
           </p>
-            <p>Rating: 
+            <p>Rating:
             <input
               type="text"
               ref="rating"
@@ -193,7 +204,7 @@ BucketItemReact = React.createClass({
           </p>
 
 						<input type="submit" value="Update This Item"/>
-						<button className="stopediting" onClick={this.closeForm}>Close Edit Form</button>	
+						<button className="stopediting" onClick={this.closeForm}>Close Edit Form</button>
 					</form>
 					: null
 				}
