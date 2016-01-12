@@ -1,11 +1,16 @@
 CategoriesReact = React.createClass({
-  
   mixins: [ReactMeteorData],
 
   getMeteorData() {
     return {
-      allCategories: CategoriesCollection.find({}).fetch(),
+      sortedCategories: CategoriesCollection.find({}, {sort: {title: 1}}).fetch()
     }
+  },
+  
+  renderCategories() {
+    return this.data.sortedCategories.map((categoryobject) => {
+        return <CategoryListReact key={categoryobject._id} thingWithTitle={categoryobject} />;
+    });
   },
 
   render (){
@@ -19,3 +24,5 @@ CategoriesReact = React.createClass({
     );
   }
 });
+
+

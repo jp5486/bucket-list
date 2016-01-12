@@ -15,6 +15,7 @@ Navbar = React.createClass({
   renderBucketList () {
 		this.hidePage();
 		ReactDOM.render(<BucketList />, document.getElementById('render-quad1'));
+    ReactDOM.render(<CategoriesReact />, document.getElementById("render-quad2"));
 
   },
 
