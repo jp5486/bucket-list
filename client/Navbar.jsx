@@ -28,14 +28,12 @@ Navbar = React.createClass({
 	render (){
 		return (
 			<nav className="navbar">
-				<div className="container">
-					<a href="#" onClick={this.renderHome}>Home</a>
-					
-					<a href="#" onClick={this.renderBucketList}>Bucket List</a>
-					
-					<a href="#" onClick={this.renderEvents}>Events</a>
-					<a href="#" onClick={this.renderFriends}>Friends</a>
-				</div>
+				<ul className="nav nav-tabs">
+					<li role="presentation" class="active"><a href="#" onClick={this.renderHome}>Home</a></li>
+					<li role="presentation"><a href="#" onClick={this.renderBucketList}>Bucket List</a></li>
+					<li role="presentation"><a href="#" onClick={this.renderEvents}>Events</a></li>
+					<li role="presentation"><a href="#" onClick={this.renderFriends}>Friends</a></li>
+				</ul>
 			</nav>
 		)
 	}
