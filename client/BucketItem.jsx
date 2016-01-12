@@ -100,6 +100,7 @@ BucketItemReact = React.createClass({
 		this.setState({editing: false})
 	},
 
+
 	addToPersonalList() {
 			// var currentTitle = this.state.title
 			// var current_ID = this.state.id

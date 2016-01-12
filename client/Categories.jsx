@@ -1,4 +1,4 @@
-Events = React.createClass({
+CategoriesReact = React.createClass({
   mixins: [ReactMeteorData],
 
   getMeteorData() {
@@ -9,7 +9,7 @@ Events = React.createClass({
   
   renderCategories() {
     return this.data.sortedCategories.map((categoryobject) => {
-        return <EventCategoryReact key={categoryobject._id} thingWithTitle={categoryobject} />;
+        return <CategoryListReact key={categoryobject._id} thingWithTitle={categoryobject} />;
     });
   },
 
