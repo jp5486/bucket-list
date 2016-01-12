@@ -98,32 +98,63 @@ BucketItemReact = React.createClass({
 
 	addToPersonalList() {
 		var currentTitle = this.state.title
-		console.log(currentTitle)
-		// var itemToAdd = BucketItemsCollection.insert({ title: currentTitle})
+		// console.log(currentTitle)
+		var itemToAdd = BucketItemsCollection.insert({ title: currentTitle})
 		// console.log("item to add = " + itemToAdd)
 		// console.log(itemToAdd)
-		console.log("***********")
-		console.log("Meteor User() below")
-		console.log(Meteor.user())
+		// console.log("***********")
+		// console.log("Meteor User() below")
+		// console.log(Meteor.user())
 
 		var currentUser = Meteor.user()
-		console.log("current user object below")
+		// console.log("current user object below")
 		console.log(currentUser)
 
 		// user.find({username: currentUser})
 		// currentUser.personalItems.push(itemToAdd)
-		console.log("personal Items below ")
-		console.log(Meteor.user().personalItems)
+		// console.log("personal Items below ")
+
+		// currentUser.profile.personalItems.push(BucketItemsCollection.insert({ title: currentTitle})	)
+
+		// Meteor.users.update({_id: Meteor.userId()}, {$set: {"profile.personalItems": itemToAdd }});
+
+
+		// Meteor.users.update(
+		// 	Meteor.userId(), {
+		// 		$push: {
+		// 			profile.personalItems: BucketItemsCollection.insert(
+		// 				{ title: currentTitle}
+		// 			)
+		// 		}
+		// 	}
+		// );
+
+		var currentProfile = Meteor.user().profile
+
+		console.log(currentProfile)
+
+		if (currentProfile !== 0) {
+			currentProfile.push(itemToAdd)
+		} else {
+			currentProfile[0].push(itemToAdd)
+		}
+
+		console.log("***********")
+
+		console.log(currentProfile)
 
 		Meteor.users.update(
 			{_id:Meteor.user()._id},
 			{ $set:
 				{
-					personalItems: [ BucketItemsCollection.insert({ title: currentTitle}) ]
+					profile: [ currentProfile ]
 				}
 			}
 		)
+		console.log(currentProfile)
+
 	},
+
 	render() {
 		const itemClassName = this.props.bucketitem.checked ? "checked" : "";
 		return (

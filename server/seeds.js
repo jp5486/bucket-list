@@ -11,6 +11,36 @@ Meteor.startup(function () {
     CategoriesCollection.insert({title: "Travel"});
     CategoriesCollection.insert({title: "Tourist"});
   };
+
+  Accounts.onCreateUser(function(options, user) {
+    user.profile = options.profile ? options.profile : [];
+    return user;
+  });
+
+  // Accounts.onCreateUser(function(options, user) {
+  //   user.personalItems = [];
+  //   if (options.profile)
+  //     user.profile = options.profile;
+  //   return user;
+  // });
+
+  // Meteor.users.allow({
+  //  update: function(userId, user){
+  //    return user._id === Meteor.userId();
+  //    return user.personalItems === Meteor.userID().personalItems();
+  //  }
+  // });
+
+// Meteor.publish("userData", function () {
+//   if (this.userId) {
+//     return Meteor.users.find({_id: this.userId},
+//                              {fields: {personalItems: 1}});
+//   } else {
+//     this.ready();
+//   }
+// });
+
+
   // if (BucketItemsCollection.find().count() == 0) {
   //   BucketItemsCollection.insert(
   //   {

@@ -28,25 +28,3 @@
 //   secret: "MMF_ljvQ3A4zQqFgfmAZRa7i"
 // });
 
-Accounts.onCreateUser(function(options, user) {
-  user.personalItems = [];
-  if (options.profile)
-    user.profile = options.profile;
-  return user;
-});
-
-Meteor.users.allow({
-   update: function(userId, user){
-     return user._id === Meteor.userId();
-     return user.personalItems === Meteor.userID().personalItems();
-   }
-});
-
-// Meteor.publish("userData", function () {
-//   if (this.userId) {
-//     return Meteor.users.find({_id: this.userId},
-//                              {fields: {personalItems: 1}});
-//   } else {
-//     this.ready();
-//   }
-// });
