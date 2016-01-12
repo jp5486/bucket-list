@@ -3,7 +3,7 @@ BucketList = React.createClass({
 
   getMeteorData() {
     return {
-      sortedBucketItems: BucketItemsCollection.find({}, {sort: {createdAt: -1}}).fetch()
+      sortedBucketItems: BucketItemsCollection.find({}, {sort: {createdAt: -1}}).fetch(),
     }
   },
 
@@ -66,39 +66,47 @@ BucketList = React.createClass({
           <button onClick={this.addingNewItem}>Add a new item!</button>
           {this.state.addingItem == true
           ? <form className="new-bucketitem" onSubmit={this.handleSubmit}>
-          
-          <p>Title: 
+
+          <p>Title:
             <input
               type="text"
               ref="title"
               placeholder="Type to add new item to your bucket list" />
           </p>
 
-          <p>Description: 
+          <p>Description:
             <input
               type="text"
               ref="description"
               placeholder="Type to add new item to your bucket list" />
           </p>
-          <p>Tags: 
+          <p>Tags:
             <input
               type="text"
               ref="tags"
               placeholder="Type to add new item to your bucket list" />
           </p>
-            <p>Category: 
-            <input
-              type="text"
-              ref="category"
-              placeholder="Type to add new item to your bucket list" />
+            <p>Category:
+             <select
+               ref="category"
+               className="education-form"
+               id="education-select">
+                 <option value="Education">Education</option>
+                 <option value="Food">Food</option>
+                 <option value="Local">Local</option>
+                 <option value="Outdoors">Outdoors</option>
+                 <option value="Sports">Sports</option>
+                 <option value="Tourist">Tourist</option>
+                 <option value="Travel">Travel</option>
+              </select>
           </p>
-            <p>Address: 
+            <p>Address:
             <input
               type="text"
               ref="address"
               placeholder="Type to add new item to your bucket list" />
           </p>
-            <p>Rating: 
+            <p>Rating:
             <input
               type="text"
               ref="rating"

@@ -6,13 +6,14 @@ Events = React.createClass({
       sortedCategories: CategoriesCollection.find({}, {sort: {title: 1}}).fetch()
     }
   },
-
+  
   renderCategories() {
     return this.data.sortedCategories.map((categoryobject) => {
-        return <CategoryReact key={categoryobject._id} thingWithTitle={categoryobject} />;
+        return <EventCategoryReact key={categoryobject._id} thingWithTitle={categoryobject} />;
     });
   },
 
+<<<<<<< HEAD
   makeAjaxCall() {
     $.ajax({
       type: 'GET' ,
@@ -30,19 +31,18 @@ Events = React.createClass({
 
 
 
+=======
+>>>>>>> 10b312cd591da07283b16c223b7c15ac6f5a3a72
   render (){
-    return (
-      <div className= "Events">
-        <ul>
-          <h3 className="Category"> {this.renderCategories()} </h3>
-
-        </ul>
-      </div>
-    )
+    return (   
+        <div className= "Events">
+          <ul>
+            <h3 className="Category"> {this.renderCategories()} 
+            </h3>
+          </ul>
+        </div> 
+    );
   }
 });
-
-
-
 
 
