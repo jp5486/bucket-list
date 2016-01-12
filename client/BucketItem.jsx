@@ -96,10 +96,34 @@ BucketItemReact = React.createClass({
 		this.setState({editing: false})
 	},
 
+	addToPersonalList() {
+		var currentTitle = this.state.title
+		console.log(currentTitle)
+		// var itemToAdd = BucketItemsCollection.insert({ title: currentTitle})
+		// console.log("item to add = " + itemToAdd)
+		// console.log(itemToAdd)
+		console.log("***********")
+		console.log("Meteor User() below")
+		console.log(Meteor.user())
 
+		var currentUser = Meteor.user()
+		console.log("current user object below")
+		console.log(currentUser)
 
+		// user.find({username: currentUser})
+		// currentUser.personalItems.push(itemToAdd)
+		console.log("personal Items below ")
+		console.log(Meteor.user().personalItems)
 
-
+		Meteor.users.update(
+			{_id:Meteor.user()._id},
+			{ $set:
+				{
+					personalItems: [ BucketItemsCollection.insert({ title: currentTitle}) ]
+				}
+			}
+		)
+	},
 	render() {
 		const itemClassName = this.props.bucketitem.checked ? "checked" : "";
 		return (
@@ -108,6 +132,12 @@ BucketItemReact = React.createClass({
 					&times;
 				</button>
 				<button onClick={this.openForm}>Edit this item</button>
+
+				{(Meteor.user() !== null)
+				?
+					<button onClick={this.addToPersonalList}>Add to my Bucket List!</button>
+				:null
+				}
 
 				<div onClick={this.toggleDescription}>
 				<p className="title">{this.props.bucketitem.title}</p>

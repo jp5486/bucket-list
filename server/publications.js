@@ -3,6 +3,9 @@
 //   return categories.find();
 // });
 
+// Meteor.publish("bucketitems", function () {
+//   return bucketitems.find();
+// });
 // ... and publish secret info for rooms where the logged-in user
 // is an admin. If the client subscribes to both streams, the records
 // are merged together into the same documents in the Rooms collection.
