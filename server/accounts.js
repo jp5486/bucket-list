@@ -28,9 +28,3 @@
 //   secret: "MMF_ljvQ3A4zQqFgfmAZRa7i"
 // });
 
-Accounts.onCreateUser(function(options, user) {
-  user.personalItems = {};
-  if (options.profile)
-    user.profile = options.profile;
-  return user;
-});
