@@ -30,7 +30,6 @@ accounts-base
 check
 accounts-ui
 twbs:bootstrap
-meteorhacks:npm
 
 
 npm-container
