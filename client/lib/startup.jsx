@@ -2,7 +2,8 @@ Meteor.startup(function () {
 	ReactDOM.render(<Navbar />, document.getElementById("render-navbar"));
   ReactDOM.render(<Login />, document.getElementById("render-login"));
 	ReactDOM.render(<BucketList />, document.getElementById("render-quad1"));
-  ReactDOM.render(<Events />, document.getElementById("render-quad2"));
+  // ReactDOM.render(<Events />, document.getElementById("render-quad2"));
+  ReactDOM.render(<CategoriesReact />, document.getElementById("render-quad2"));
 
 	// ReactDOM.render(<Quad2 />, document.getElementById("render-quad2"));
 	// ReactDOM.render(<Quad3 />, document.getElementById("render-quad3"));

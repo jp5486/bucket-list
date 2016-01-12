@@ -96,10 +96,6 @@ BucketItemReact = React.createClass({
 		this.setState({editing: false})
 	},
 
-
-
-
-
 	render() {
 		const itemClassName = this.props.bucketitem.checked ? "checked" : "";
 		return (
