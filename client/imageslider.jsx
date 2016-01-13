@@ -10,46 +10,46 @@ render (){
             <ul>
             <li id="first" className="firstanimation">
             <a href="#">
-            <img src="https://images.unsplash.com/photo-1440557958969-404dc361d86f?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=345041c7171b59be6312c9ff0525c3df" alt="Cougar"/>
+            <img src="https://images.unsplash.com/photo-1452519650406-9a85e3881374?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=56c736f25438ccf30b2c8d5831338995" alt="Image" alt="Image"/>
             </a>
             <div className="tooltip">
-            <h1>Cougar</h1>
+            <h1></h1>
             </div>
             </li>
 
             <li id="second" className="secondanimation">
             <a href="#">
-            <img src="https://images.unsplash.com/photo-1445455993942-545627632166?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=fd41e8f19107652e45e1bdc35df3a92b" alt="Lions"/>
+            <img src="https://images.unsplash.com/photo-1428434828181-9d110c490087?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=74f120a985f4e5a45dea5966f5dce182" alt="Image"/>
             </a>
             <div className="tooltip">
-            <h1>Lions</h1>
+            <h1></h1>
             </div>
             </li>
             
             <li id="third" className="thirdanimation">
             <a href="#">
-            <img src="https://images.unsplash.com/photo-1418807817813-5847a371f1dd?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=677b72c8297a74d05b773e483dbd8f85" alt="Snowalker"/>
+            <img src="https://images.unsplash.com/photo-1447522760800-59f967f9083e?crop=entropy&dpr=0.75&fit=crop&fm=jpg&h=1000&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1900" alt="Image"/>
             </a>
             <div className="tooltip">
-            <h1>Snowalker</h1>
+            <h1></h1>
             </div>
             </li>
                         
             <li id="fourth" className="fourthanimation">
             <a href="#">
-            <img src="https://images.unsplash.com/photo-1428434828181-9d110c490087?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=74f120a985f4e5a45dea5966f5dce182" alt="Howling"/>
+            <img src="https://images.unsplash.com/photo-1428434828181-9d110c490087?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=74f120a985f4e5a45dea5966f5dce182" alt="Image"/>
             </a>
             <div className="tooltip">
-            <h1>Howling</h1>
+            <h1></h1>
             </div>
             </li>
                         
             <li id="fifth" className="fifthanimation">
             <a href="#">
-            <img src="https://images.unsplash.com/photo-1445455993942-545627632166?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=fd41e8f19107652e45e1bdc35df3a92b" alt="Sunbathing"/>
+            <img src="https://images.unsplash.com/photo-1452509133926-2b180c6d6245?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=522dbd6dd5ef841dea730e25e3c19709" alt="Image"/>
             </a>
             <div className="tooltip">
-            <h1>Sunbathing</h1>
+            <h1></h1>
             </div>
             </li>
             </ul>
