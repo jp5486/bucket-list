@@ -1,10 +1,11 @@
 Slider = React.createClass({
 
+
 	render (){
 		return (
 
 		<ul className="slides">
-    <input type="radio" name="radio-btn" id="img-1"/>
+    <input type="radio" name="radio-btn" id="img-1" defaultChecked />
     <li className="slide-container">
 		<div className="slide">
 			<img src="https://images.unsplash.com/photo-1440557958969-404dc361d86f?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=345041c7171b59be6312c9ff0525c3df"/>
