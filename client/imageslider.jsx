@@ -1,9 +1,69 @@
-Slider = React.createClass({
+AutoSlider = React.createClass({
 
+render (){
+  return (
+    <div className="container">
+      <div id="content-slider">
+        <div id="slider">
+          <div id="mask">
+          <ul>
+          <li id="first" className="firstanimation">
+          <a href="#">
+          <img src="http://oaktowner.com/wp-content/photos/meteor-shower.jpg" alt="Image"/>
+          </a>
+          <div className="tooltip">
+          <h1></h1>
+          </div>
+          </li>
 
+          <li id="second" className="secondanimation">
+          <a href="#">
+          <img src="https://images.unsplash.com/photo-1428434828181-9d110c490087?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=74f120a985f4e5a45dea5966f5dce182" alt="Image"/>
+          </a>
+          <div className="tooltip">
+          <h1></h1>
+          </div>
+          </li>
+          
+          <li id="third" className="thirdanimation">
+          <a href="#">
+          <img src="https://images.unsplash.com/photo-1447522760800-59f967f9083e?crop=entropy&dpr=0.75&fit=crop&fm=jpg&h=1000&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1900" alt="Image"/>
+          </a>
+          <div className="tooltip">
+          <h1></h1>
+          </div>
+          </li>
+                      
+          <li id="fourth" className="fourthanimation">
+          <a href="#">
+          <img src="https://images.unsplash.com/photo-1428434828181-9d110c490087?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=74f120a985f4e5a45dea5966f5dce182" alt="Image"/>
+          </a>
+          <div className="tooltip">
+          <h1></h1>
+          </div>
+          </li>
+                      
+          <li id="fifth" className="fifthanimation">
+          <a href="#">
+          <img src="https://images.unsplash.com/photo-1452509133926-2b180c6d6245?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=522dbd6dd5ef841dea730e25e3c19709" alt="Image"/>
+          </a>
+          <div className="tooltip">
+          <h1></h1>
+          </div>
+          </li>
+          </ul>
+          </div>
+          <div className="progress-bar"></div>
+        </div>
+      </div>
+    </div>
+    )
+  }
+})
+
+StaticlSlider = React.createClass({
 	render (){
 		return (
-
 		<ul className="slides">
     <input type="radio" name="radio-btn" id="img-1" defaultChecked />
     <li className="slide-container">
@@ -81,7 +141,5 @@ Slider = React.createClass({
     </li>
 </ul>
 		)
-
 	}
-
 })

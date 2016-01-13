@@ -8,7 +8,7 @@ Meteor.startup(function () {
 
   ReactDOM.render(<Login />, document.getElementById("render-login"));
   
-  ReactDOM.render(<Slider />, document.getElementById("render-quad4"));
+  ReactDOM.render(<AutoSlider />, document.getElementById("render-quad4"));
 	// ReactDOM.render(<BucketList />, document.getElementById("render-quad1"));
 
   // ReactDOM.render(<Events />, document.getElementById("render-quad2"));
