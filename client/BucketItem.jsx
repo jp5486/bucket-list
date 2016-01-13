@@ -6,6 +6,7 @@ BucketItemReact = React.createClass({
 
 	getInitialState() {
 		return {
+			id: this.props.bucketitem._id,
 			title: this.props.bucketitem.title,
 			description: this.props.bucketitem.description,
 			tags: this.props.bucketitem.tags,
@@ -13,6 +14,8 @@ BucketItemReact = React.createClass({
 			address: this.props.bucketitem.address,
 			rating: this.props.bucketitem.rating,
 			editing: false,
+
+			username: this.props.bucketitem.username,
 			showDescription: false,
 			showAll: false
 		};
@@ -48,14 +51,17 @@ BucketItemReact = React.createClass({
 		var newcategory = this.state.category.trim();
 		var newaddress = this.state.address.trim();
 		var newrating = this.state.rating.trim();
-		BucketItemsCollection.update(this.props.bucketitem._id, {
-			title: newtitle,
-			description: newdescription,
-			tags: newtags,
-			category: newcategory,
-			address: newaddress,
-			rating: newrating,
-		})
+		BucketItemsCollection.update(this.props.bucketitem._id, {$set : {
+					title: newtitle,
+					description: newdescription,
+					tags: newtags,
+					username: this.props.bucketitem.username,
+					category: newcategory,
+					address: newaddress,
+					rating: newrating,
+				}
+			}
+		)
 	},
 
 	deleteThisBucketItem() {
@@ -94,9 +100,63 @@ BucketItemReact = React.createClass({
 		this.setState({editing: false})
 	},
 
-	
+
+	addToPersonalList() {
+			// var currentTitle = this.state.title
+			// var current_ID = this.state.id
+			// var currentUser = Meteor.user()
+
+			// var currentProfile = Meteor.user().profile
+			// var usersItems = Meteor.user().profile.takenItems
+
+		// console.log("currentProfile::")
+		// console.log(currentProfile)
+
+		// console.log("userItems::")
+		// console.log(usersItems)
 
 
+		// var finalItemsList = function(){
+		// 	usersItems.push(currentTitle)
+		// }
+
+		// var itemToAdd = {currentTitle}
+		// // console.log("itemToAdd::")
+		// // console.log(itemToAdd)
+
+		// finalItemsList();
+		// console.log(currentUser)
+		// var finalItems = finalItemsList
+		// console.log("finalItemsList::")
+		// console.log(itemToAdd)
+		// var addedItemProfile = function() {
+		// 	currentProfile.takenItems =
+		// }
+
+
+		// console.log(currentProfile)
+		// 	var usersProfile = currentProfile
+		// 	// allItems.push("test")
+		// 	// currentProfile.takenItems = "test";
+		// 	var allItems = currentProfile.takenItems
+		// 	var finalItems = allItems.push("testing")
+		// 	console.log(allItems)
+			// var currentItemsTaken = Meteor.user().profile.takenItems
+			// var addedOneItem = currentItemsTaken.push({name: "I hope this works"})
+			// console.log("Profile Before Adding::")
+			// console.log(Meteor.user().profile);
+		// console.log(currentItemsTaken);
+		// console.log(addedOneItem);
+
+			// Meteor.users.update({_id: Meteor.user()._id},
+			// 	{$set: {
+			// 						takenItems:{ currentItemsTaken}
+			// 					}
+			// 				}
+			// 				)
+			// console.log("Profile After Adding::")
+			// console.log(Meteor.user().profile);
+	},
 
 	render() {
 		const itemClassName = this.props.bucketitem.checked ? "checked" : "";
@@ -107,7 +167,13 @@ BucketItemReact = React.createClass({
 				</button>
 				<button onClick={this.openForm}>Edit this item</button>
 
-				<div onClick={this.toggleDescription}>	
+				{(Meteor.user() !== null)
+				?
+					<button onClick={this.addToPersonalList}>Add to my Bucket List!</button>
+				:null
+				}
+
+				<div onClick={this.toggleDescription}>
 				<p className="title">{this.props.bucketitem.title}</p>
 				</div>
 
@@ -123,33 +189,33 @@ BucketItemReact = React.createClass({
 				}
 
 				{(this.state.showDescription == true && this.state.showAll == true)
-					? 
+					?
 						<div>
 							<ul>
-								
+
 								<li className="tags">{this.props.bucketitem.tags}</li>
 								<li className="category">{this.props.bucketitem.category}</li>
 								<li className="address">{this.props.bucketitem.address}</li>
 								<li className="rating">{this.props.bucketitem.rating}</li>
 							</ul>
 						</div>
-					
+
 					:	null
-					
+
 				}
 				{(this.state.editing == true)
 					? <form className="editform" onSubmit={this.updateThisBucketItem}>
 					<p> Title:
 						<input
-							type="text" 
+							type="text"
 							name="updatedText"
 							placeholder="Please don't leave blank"
 							onChange={this.handleTitleChange}
 							defaultValue={this.props.bucketitem.title}
 						/>
 					</p>
-	        <p>  
-	          Description: 
+	        <p>
+	          Description:
             <input
               type="text"
               ref="description"
@@ -159,7 +225,7 @@ BucketItemReact = React.createClass({
 
           </p>
           <p>
-          	Tags: 
+          	Tags:
             <input
               type="text"
               ref="tags"
@@ -167,15 +233,24 @@ BucketItemReact = React.createClass({
 							defaultValue={this.props.bucketitem.tags}
               placeholder="Define tags here" />
           </p>
-            <p>Category: 
-            <input
-              type="text"
-              ref="category"
-              onChange={this.handleCategoryChange}
-							defaultValue={this.props.bucketitem.category}
-              placeholder="List Category Here" />
+           <p>Category:
+					   <select
+						   ref="category"
+               onChange={this.handleCategoryChange}
+							 defaultValue={this.props.bucketitem.category}
+						   className="drop-down-select"
+						   id="category-drop-down-edit">
+						     <option value="Education">Education</option>
+						     <option value="Food">Food</option>
+						     <option value="Local">Local</option>
+						     <option value="Outdoors">Outdoors</option>
+						     <option value="Sports">Sports</option>
+						     <option value="Tourist">Tourist</option>
+						     <option value="Travel">Travel</option>
+						  </select>
+
           </p>
-            <p>Address: 
+            <p>Address:
             <input
               type="text"
               ref="address"
@@ -183,17 +258,23 @@ BucketItemReact = React.createClass({
 							defaultValue={this.props.bucketitem.address}
               placeholder="Type Address Here" />
           </p>
-            <p>Rating: 
-            <input
-              type="text"
-              ref="rating"
-              onChange={this.handleRatingChange}
-							defaultValue={this.props.bucketitem.rating}
-              placeholder="Rate the item" />
+            <p>Rating:
+	            <select
+						   ref="rating"
+               onChange={this.handleRatingChange}
+							 defaultValue={this.props.bucketitem.rating}
+						   className="drop-down-select"
+						   id="rating-select-edit">
+						     <option value="1" >1</option>
+						     <option value="2" >2</option>
+						     <option value="3" >3</option>
+						     <option value="4" >4</option>
+						     <option value="5" >5</option>
+						  </select>
           </p>
 
 						<input type="submit" value="Update This Item"/>
-						<button className="stopediting" onClick={this.closeForm}>Close Edit Form</button>	
+						<button className="stopediting" onClick={this.closeForm}>Close Edit Form</button>
 					</form>
 					: null
 				}

@@ -3,7 +3,8 @@ BucketList = React.createClass({
 
   getMeteorData() {
     return {
-      sortedBucketItems: BucketItemsCollection.find({}, {sort: {createdAt: -1}}).fetch()
+      sortedBucketItems: BucketItemsCollection.find({}, {sort: {createdAt: -1}}).fetch(),
+      currentUser: Meteor.user()
     }
   },
 
@@ -45,6 +46,8 @@ BucketList = React.createClass({
       category: category,
       address: address,
       rating: rating,
+      owner: Meteor.userId(),
+      username: Meteor.user().username,
       createdAt: new Date()
     });
 
@@ -59,63 +62,81 @@ BucketList = React.createClass({
   },
 
   render() {
-    return (
-      <div className="bucketlist">
-        <header>
-          <h1>Bucket List</h1>
-          <button onClick={this.addingNewItem}>Add a new item!</button>
-          {this.state.addingItem == true
-          ? <form className="new-bucketitem" onSubmit={this.handleSubmit}>
-          
-          <p>Title: 
-            <input
-              type="text"
-              ref="title"
-              placeholder="Type to add new item to your bucket list" />
-          </p>
+    if (Meteor.user() == null) {
+      return ( <div> Please Log In to create a personal bucket List</div> )
+    } else {
+      return (
+        <div className="bucketlist">
+          <header>
+            <h1>Bucket List</h1>
+            <button onClick={this.addingNewItem}>Add a new item!</button>
+            {this.state.addingItem == true
+            ? <form className="new-bucketitem" onSubmit={this.handleSubmit}>
 
-          <p>Description: 
-            <input
-              type="text"
-              ref="description"
-              placeholder="Type to add new item to your bucket list" />
-          </p>
-          <p>Tags: 
-            <input
-              type="text"
-              ref="tags"
-              placeholder="Type to add new item to your bucket list" />
-          </p>
-            <p>Category: 
-            <input
-              type="text"
-              ref="category"
-              placeholder="Type to add new item to your bucket list" />
-          </p>
-            <p>Address: 
-            <input
-              type="text"
-              ref="address"
-              placeholder="Type to add new item to your bucket list" />
-          </p>
-            <p>Rating: 
-            <input
-              type="text"
-              ref="rating"
-              placeholder="Type to add new item to your bucket list" />
-          </p>
-          <input
-                type="submit"
-                value="submit"/>
-          </form>
-          : null
-          }
-        </header>
+            <p>Title:
+              <input
+                type="text"
+                ref="title"
+                placeholder="Type to add new item to your bucket list" />
+            </p>
 
-        <ul>
-          {this.renderBucketItems()}
-        </ul>
-      </div>
+            <p>Description:
+              <input
+                type="text"
+                ref="description"
+                placeholder="Type to add new item to your bucket list" />
+            </p>
+            <p>Tags:
+              <input
+                type="text"
+                ref="tags"
+                placeholder="Type to add new item to your bucket list" />
+            </p>
+              <p>Category:
+               <select
+                 ref="category"
+                 className="drop-down-select"
+                 id="education-select-create">
+                   <option value="Education">Education</option>
+                   <option value="Food">Food</option>
+                   <option value="Local">Local</option>
+                   <option value="Outdoors">Outdoors</option>
+                   <option value="Sports">Sports</option>
+                   <option value="Tourist">Tourist</option>
+                   <option value="Travel">Travel</option>
+                </select>
+            </p>
+              <p>Address:
+              <input
+                type="text"
+                ref="address"
+                placeholder="Type to add new item to your bucket list" />
+            </p>
+            <p>Rating:
+              <select
+               ref="rating"
+               className="drop-down-select"
+               id="rating-select">
+                 <option value="1" >1</option>
+                 <option value="2" >2</option>
+                 <option value="3" >3</option>
+                 <option value="4" >4</option>
+                 <option value="5" >5</option>
+              </select>
+            </p>
+            <input
+                  type="submit"
+                  value="submit"/>
+            </form>
+            : null
+            }
+          </header>
+
+          <ul>
+            {this.renderBucketItems()}
+          </ul>
+        </div>
       );
+    }
   }
 });
