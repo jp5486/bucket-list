@@ -1,4 +1,87 @@
-Slider = React.createClass({
+Slider2 = React.createClass({
+
+render (){
+  return (
+
+<div className="container">
+    <div id="content-slider">
+        <div id="slider">
+            <div id="mask">
+            <ul>
+            <li id="first" className="firstanimation">
+            <a href="#">
+            <img src="https://images.unsplash.com/photo-1440557958969-404dc361d86f?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=345041c7171b59be6312c9ff0525c3df" alt="Cougar"/>
+            </a>
+            <div className="tooltip">
+            <h1>Cougar</h1>
+            </div>
+            </li>
+
+            <li id="second" className="secondanimation">
+            <a href="#">
+            <img src="https://images.unsplash.com/photo-1445455993942-545627632166?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=fd41e8f19107652e45e1bdc35df3a92b" alt="Lions"/>
+            </a>
+            <div className="tooltip">
+            <h1>Lions</h1>
+            </div>
+            </li>
+            
+            <li id="third" className="thirdanimation">
+            <a href="#">
+            <img src="https://images.unsplash.com/photo-1418807817813-5847a371f1dd?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=677b72c8297a74d05b773e483dbd8f85" alt="Snowalker"/>
+            </a>
+            <div className="tooltip">
+            <h1>Snowalker</h1>
+            </div>
+            </li>
+                        
+            <li id="fourth" className="fourthanimation">
+            <a href="#">
+            <img src="https://images.unsplash.com/photo-1428434828181-9d110c490087?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=74f120a985f4e5a45dea5966f5dce182" alt="Howling"/>
+            </a>
+            <div className="tooltip">
+            <h1>Howling</h1>
+            </div>
+            </li>
+                        
+            <li id="fifth" className="fifthanimation">
+            <a href="#">
+            <img src="https://images.unsplash.com/photo-1445455993942-545627632166?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=fd41e8f19107652e45e1bdc35df3a92b" alt="Sunbathing"/>
+            </a>
+            <div className="tooltip">
+            <h1>Sunbathing</h1>
+            </div>
+            </li>
+            </ul>
+            </div>
+            <div className="progress-bar"></div>
+        </div>
+    </div>
+</div>
+
+    )
+
+  }
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Slider1 = React.createClass({
 
 
 	render (){
