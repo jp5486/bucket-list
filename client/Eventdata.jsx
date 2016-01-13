@@ -12,12 +12,14 @@ Address: "1100 Haight Street San Francisco California 94117"},
 {Title:P"oint Bonita Lighthouse Tour - Jan 16",
 Address: "948 Fort Barry Sausalito California 94965"},
 
-
-{Title:H"istoric Waterfront Walking Tour in San Francisco - Jan 16",
+{Title:"Historic Waterfront Walking Tour in San Francisco - Jan 16",
 Address: "Hyde and Jefferson St (crossroads) San Francisco California  94133"},
 
 {Title:"Toddler Ramble: Animals of All Kinds!",
 Address: "4901 Breakwater Avenue Hayward California 94545"},
+
+{Title: "Ruby Skye in San Francisco",
+Address: "420 Mason Street San Francisco California 94102"}
 ],
 
 
@@ -30,6 +32,12 @@ Address: "150 Andeta Way Portola Valley California 94028"},
 
 {Title: "Floral Design Lesson Introductory Program - Jan 16",
 Address: "831 Mitten Road #204 Burlingame California 94010"},
+
+{Title: "Gael Chandler at Books Inc. in The Marina",
+Address: "2251 Chestnut Street San Francisco California 94115"},
+
+{Title: "StarTalk with Bill Nye",
+Address: "275 Hayes Street San Francisco California 94102"},
 
 ],
 
