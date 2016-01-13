@@ -9,7 +9,7 @@ render (){
           <ul>
           <li id="first" className="firstanimation">
           <a href="#">
-          <img src="http://oaktowner.com/wp-content/photos/meteor-shower.jpg" alt="Image" alt="Image"/>
+          <img src="http://oaktowner.com/wp-content/photos/meteor-shower.jpg" alt="Image"/>
           </a>
           <div className="tooltip">
           <h1></h1>
