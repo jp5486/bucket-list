@@ -6,6 +6,7 @@ BucketItemReact = React.createClass({
 
 	getInitialState() {
 		return {
+			id: this.props.bucketitem._id,
 			title: this.props.bucketitem.title,
 			description: this.props.bucketitem.description,
 			tags: this.props.bucketitem.tags,
@@ -13,6 +14,8 @@ BucketItemReact = React.createClass({
 			address: this.props.bucketitem.address,
 			rating: this.props.bucketitem.rating,
 			editing: false,
+
+			username: this.props.bucketitem.username,
 			showDescription: false,
 			showAll: false
 		};
@@ -52,6 +55,7 @@ BucketItemReact = React.createClass({
 					title: newtitle,
 					description: newdescription,
 					tags: newtags,
+					username: this.props.bucketitem.username,
 					category: newcategory,
 					address: newaddress,
 					rating: newrating,
@@ -96,6 +100,64 @@ BucketItemReact = React.createClass({
 		this.setState({editing: false})
 	},
 
+
+	addToPersonalList() {
+			// var currentTitle = this.state.title
+			// var current_ID = this.state.id
+			// var currentUser = Meteor.user()
+
+			// var currentProfile = Meteor.user().profile
+			// var usersItems = Meteor.user().profile.takenItems
+
+		// console.log("currentProfile::")
+		// console.log(currentProfile)
+
+		// console.log("userItems::")
+		// console.log(usersItems)
+
+
+		// var finalItemsList = function(){
+		// 	usersItems.push(currentTitle)
+		// }
+
+		// var itemToAdd = {currentTitle}
+		// // console.log("itemToAdd::")
+		// // console.log(itemToAdd)
+
+		// finalItemsList();
+		// console.log(currentUser)
+		// var finalItems = finalItemsList
+		// console.log("finalItemsList::")
+		// console.log(itemToAdd)
+		// var addedItemProfile = function() {
+		// 	currentProfile.takenItems =
+		// }
+
+
+		// console.log(currentProfile)
+		// 	var usersProfile = currentProfile
+		// 	// allItems.push("test")
+		// 	// currentProfile.takenItems = "test";
+		// 	var allItems = currentProfile.takenItems
+		// 	var finalItems = allItems.push("testing")
+		// 	console.log(allItems)
+			// var currentItemsTaken = Meteor.user().profile.takenItems
+			// var addedOneItem = currentItemsTaken.push({name: "I hope this works"})
+			// console.log("Profile Before Adding::")
+			// console.log(Meteor.user().profile);
+		// console.log(currentItemsTaken);
+		// console.log(addedOneItem);
+
+			// Meteor.users.update({_id: Meteor.user()._id},
+			// 	{$set: {
+			// 						takenItems:{ currentItemsTaken}
+			// 					}
+			// 				}
+			// 				)
+			// console.log("Profile After Adding::")
+			// console.log(Meteor.user().profile);
+	},
+
 	render() {
 		const itemClassName = this.props.bucketitem.checked ? "checked" : "";
 		return (
@@ -104,6 +166,12 @@ BucketItemReact = React.createClass({
 					&times;
 				</button>
 				<button onClick={this.openForm}>Edit this item</button>
+
+				{(Meteor.user() !== null)
+				?
+					<button onClick={this.addToPersonalList}>Add to my Bucket List!</button>
+				:null
+				}
 
 				<div onClick={this.toggleDescription}>
 				<p className="title">{this.props.bucketitem.title}</p>
@@ -170,8 +238,8 @@ BucketItemReact = React.createClass({
 						   ref="category"
                onChange={this.handleCategoryChange}
 							 defaultValue={this.props.bucketitem.category}
-						   className="education-form"
-						   id="education-select">
+						   className="drop-down-select"
+						   id="category-drop-down-edit">
 						     <option value="Education">Education</option>
 						     <option value="Food">Food</option>
 						     <option value="Local">Local</option>
@@ -191,12 +259,18 @@ BucketItemReact = React.createClass({
               placeholder="Type Address Here" />
           </p>
             <p>Rating:
-            <input
-              type="text"
-              ref="rating"
-              onChange={this.handleRatingChange}
-							defaultValue={this.props.bucketitem.rating}
-              placeholder="Rate the item" />
+	            <select
+						   ref="rating"
+               onChange={this.handleRatingChange}
+							 defaultValue={this.props.bucketitem.rating}
+						   className="drop-down-select"
+						   id="rating-select-edit">
+						     <option value="1" >1</option>
+						     <option value="2" >2</option>
+						     <option value="3" >3</option>
+						     <option value="4" >4</option>
+						     <option value="5" >5</option>
+						  </select>
           </p>
 
 						<input type="submit" value="Update This Item"/>
