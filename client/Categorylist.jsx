@@ -13,7 +13,7 @@ CategoryListReact = React.createClass({
     }
   },
 
-  
+
   renderItems(){
     return this.data.allItems.map((item) => {
       return <BucketItemsByCategory key={item._id} bucketItem={item} />;
@@ -33,10 +33,10 @@ CategoryListReact = React.createClass({
   render() {
     return (
 
-      <li className="Category-Title"> 
+      <li className="Category-Title">
       <div onClick={this.toggleItems}>
         <p>{this.props.thingWithTitle.title}</p>
-      </div>  
+      </div>
         {(this.state.showItems == true)
         ?
         <div>
@@ -45,7 +45,7 @@ CategoryListReact = React.createClass({
            </ul>
         </div>
         :null
-        } 
+        }
 
       </li>
     );
