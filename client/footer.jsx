@@ -7,7 +7,16 @@ Footer = React.createClass({
 		ReactDOM.unmountComponentAtNode(document.getElementById("render-quad4"))
 	},
 	
-	
+	renderAbout () {
+		this.hidePage();
+		ReactDOM.render(<About />, document.getElementById('render-quad1'));
+	},
+
+	renderCredits () {
+		this.hidePage();
+		ReactDOM.render(<Credits />, document.getElementById('render-quad1'));
+	},
+
 	render () {
 		return (
 			<nav className="footer">
@@ -19,8 +28,5 @@ Footer = React.createClass({
 			</nav>			
 
 	  ) 
-
 	}
-
-
 })
