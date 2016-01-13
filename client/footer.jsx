@@ -7,6 +7,7 @@ Footer = React.createClass({
 		ReactDOM.unmountComponentAtNode(document.getElementById("render-quad4"))
 	},
 	
+	
 	render () {
 		return (
 			<nav className="footer">
