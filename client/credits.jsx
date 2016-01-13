@@ -11,12 +11,12 @@ Credits = React.createClass({
 		return (
 			<div>
 				<ul>
-					<li><a href="https://www.meteor.com">Meteor</a></li>
-					<li><a href="https://www.mongodb.com">MongoDB</a></li>
-					<li><a href="facebook.github.io/react/">React</a></li>
-					<li><a href="cordova.apache.org/">Cordova</a></li>
+					<li><a href="https://www.meteor.com"><img className='meteor-logo' src='meteor.png' /></a></li>
+					<li><a href="https://www.mongodb.com"><img className='mongo-logo' src='mongodb.png' /></a></li>
+					<li><a href="facebook.github.io/react/"><img className='react-logo' src='react.png' /></a></li>
+					<li><a href="cordova.apache.org/"><img className='cordova-logo' src='cordova.png' /></a></li>
 					<li><a href="meteor.com/blaze">Blaze</a></li>
-					<li><a href="https://github.com">Github</a></li>
+					<li><a href="https://github.com"><img className='github-logo' src='github.jpg'/></a></li>
 				</ul>
 			</div>
 	  ) 
