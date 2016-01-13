@@ -238,8 +238,8 @@ BucketItemReact = React.createClass({
 						   ref="category"
                onChange={this.handleCategoryChange}
 							 defaultValue={this.props.bucketitem.category}
-						   className="education-form"
-						   id="education-select">
+						   className="drop-down-select"
+						   id="category-drop-down-edit">
 						     <option value="Education">Education</option>
 						     <option value="Food">Food</option>
 						     <option value="Local">Local</option>
@@ -259,12 +259,18 @@ BucketItemReact = React.createClass({
               placeholder="Type Address Here" />
           </p>
             <p>Rating:
-            <input
-              type="text"
-              ref="rating"
-              onChange={this.handleRatingChange}
-							defaultValue={this.props.bucketitem.rating}
-              placeholder="Rate the item" />
+	            <select
+						   ref="rating"
+               onChange={this.handleRatingChange}
+							 defaultValue={this.props.bucketitem.rating}
+						   className="drop-down-select"
+						   id="rating-select-edit">
+						     <option value="1" >1</option>
+						     <option value="2" >2</option>
+						     <option value="3" >3</option>
+						     <option value="4" >4</option>
+						     <option value="5" >5</option>
+						  </select>
           </p>
 
 						<input type="submit" value="Update This Item"/>

@@ -10,7 +10,7 @@ Navbar = React.createClass({
 
 	renderHome () {
 		this.hidePage();
-		// ReactDOM.render(<BucketList />, document.getElementById('render-quad1'));
+		ReactDOM.render(<BucketList />, document.getElementById('render-quad1'));
     ReactDOM.render(<CategoriesReact />, document.getElementById("render-quad2"));
 	},
 
