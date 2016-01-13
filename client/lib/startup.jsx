@@ -10,7 +10,6 @@ Meteor.startup(function () {
   // ReactDOM.render(<Events />, document.getElementById("render-quad2"));
   ReactDOM.render(<CategoriesReact />, document.getElementById("render-quad2"));
 
-	// ReactDOM.render(<Quad2 />, document.getElementById("render-quad2"));
-	// ReactDOM.render(<Quad3 />, document.getElementById("render-quad3"));
+	ReactDOM.render(<Map />, document.getElementById("render-quad3"));
 	// ReactDOM.render(<Quad4 />, document.getElementById("render-quad4"));
 });

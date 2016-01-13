@@ -13,6 +13,24 @@ Events = React.createClass({
     });
   },
 
+  makeAjaxCall() {
+    $.ajax({
+      type: 'GET' ,
+      url: 'http://api.eventful.com/json/events/search?location=37.784517,-122.397194&within=5&app_key=jMhXTrTv46vxrBgT'
+    }
+      ).done(function(response){
+        console.log(response)
+      })
+  },
+
+  componentDidMount() {
+    this.makeAjaxCall()
+  },
+
+
+
+
+
   render (){
     return (   
         <div className= "Events">
