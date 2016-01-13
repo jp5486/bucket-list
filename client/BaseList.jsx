@@ -95,8 +95,8 @@ BucketList = React.createClass({
               <p>Category:
                <select
                  ref="category"
-                 className="education-form"
-                 id="education-select">
+                 className="drop-down-select"
+                 id="education-select-create">
                    <option value="Education">Education</option>
                    <option value="Food">Food</option>
                    <option value="Local">Local</option>
@@ -112,11 +112,17 @@ BucketList = React.createClass({
                 ref="address"
                 placeholder="Type to add new item to your bucket list" />
             </p>
-              <p>Rating:
-              <input
-                type="text"
-                ref="rating"
-                placeholder="Type to add new item to your bucket list" />
+            <p>Rating:
+              <select
+               ref="rating"
+               className="drop-down-select"
+               id="rating-select">
+                 <option value="1" >1</option>
+                 <option value="2" >2</option>
+                 <option value="3" >3</option>
+                 <option value="4" >4</option>
+                 <option value="5" >5</option>
+              </select>
             </p>
             <input
                   type="submit"
