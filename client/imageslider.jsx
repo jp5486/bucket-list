@@ -1,4 +1,4 @@
-Slider2 = React.createClass({
+AutoSlider = React.createClass({
 
 render (){
   return (
@@ -65,23 +65,7 @@ render (){
 
 })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Slider1 = React.createClass({
+StaticlSlider = React.createClass({
 
 
 	render (){
