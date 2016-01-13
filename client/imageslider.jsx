@@ -61,7 +61,7 @@ render (){
   }
 })
 
-StaticlSlider = React.createClass({
+StaticSlider = React.createClass({
 	render (){
 		return (
 		<ul className="slides">
