@@ -30,3 +30,6 @@ check
 accounts-ui
 dburles:google-maps
 twbs:bootstrap
+
+
+npm-container
