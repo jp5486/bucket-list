@@ -1,1 +1,1 @@
-MarkersList = new Mongo.Collection("markers")
+MarkersList = new Mongo.Collection("markers");

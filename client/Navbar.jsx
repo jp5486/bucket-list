@@ -33,7 +33,7 @@ Navbar = React.createClass({
 		return (
 			<nav className="navbar">
 				<ul className="nav nav-tabs">
-					<li role="presentation" class="active"><a href="#" onClick={this.renderHome}>Home</a></li>
+					<li role="presentation"><a href="#" onClick={this.renderHome}>Home</a></li>
 					<li role="presentation"><a href="#" onClick={this.renderBucketList}>Bucket List</a></li>
 					<li role="presentation"><a href="#" onClick={this.renderEvents}>Events</a></li>
 					<li role="presentation"><a href="#" onClick={this.renderFriends}>Friends</a></li>

@@ -2,6 +2,7 @@ Meteor.subscribe("bucketitems");
 Meteor.subscribe("userData");
 Meteor.subscribe("categories");
 Meteor.subscribe("allUserData");
+Meteor.subscribe("markers");
 
 Meteor.startup(function () {
 	ReactDOM.render(<Navbar />, document.getElementById("render-navbar"));
