@@ -98,9 +98,11 @@ Map = React.createClass({
   showEvents () {
     var allEvents = MarkersList.find();
     console.log("One event::");
-    console.log(allEvents[1]);
+    console.log(allEvents.count);
     for(i=0;i<allEvents.count();i++)
     {
+      console.log("Current Event::")
+      console.log(currentEvent)
       var currentEvent = allEvents[i]
       '<h1>' + currentEvent.name + '</h1>' +
       '<p>Address: ' + currentEvent + '</p>' +
@@ -131,8 +133,8 @@ Map = React.createClass({
                 <input type="submit" value="Add Location"></input>
               </form>
             </div>
-            <div>
-              {this.showEvents()}
+            <div className="listed-events">
+              {this.showEvents}
             </div>
         </div>
         );

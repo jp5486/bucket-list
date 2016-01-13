@@ -1,4 +1,10 @@
 #map-gic {
-    height: 500px;
-    width: 500px
+    height: 30em;
+    width: 30em;
+}
+
+.listed-events {
+  height: 30em;
+  width: 40em;
+  background: lightgray;
 }
