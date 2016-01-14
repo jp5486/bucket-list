@@ -34,11 +34,6 @@ Navbar = React.createClass({
 		ReactDOM.render(<Events />, document.getElementById('render-quad2'));
 	},
 
-	renderFriends (event) {
-		event.preventDefault();
-		this.hidePage();
-	},
-
 	// render (){
 	// 	return (
 	// 		<nav className="navbar">
