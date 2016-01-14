@@ -15,13 +15,50 @@ AutoSlider = React.createClass({
     this.setState({hover: false})
   },
 
+  componentDidMount(){
+    $(document).ready(function(){
+      $('.carousel').carousel();
+    });
+  },
+
 render (){
   return (
-    
-    <div>
+    <div id="this-carousel-id" class="carousel slide">
+  <div class="carousel-inner">
+    <div class="item active">
+      <img src="https://images.unsplash.com/photo-1452723312111-3a7d0db0e024?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=d2caa73026ef83d5701e1d6d3f1957a6" alt="" />
+      <div class="carousel-caption">
+        <p>Caption text here</p>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://images.unsplash.com/photo-1452509133926-2b180c6d6245?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=522dbd6dd5ef841dea730e25e3c19709" alt="" />
+      <div class="carousel-caption">
+        <p>Caption text here</p>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://images.unsplash.com/photo-1428434828181-9d110c490087?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=74f120a985f4e5a45dea5966f5dce182" alt="" />
+      <div class="carousel-caption">
+        <p>Caption text here</p>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://images.unsplash.com/photo-1447522760800-59f967f9083e?crop=entropy&dpr=0.75&fit=crop&fm=jpg&h=1000&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1900" alt="" />
+      <div class="carousel-caption">
+        <p>Caption text here</p>
+      </div>
+    </div>
+  </div>
+
+
+    <a class="carousel-control left" href="#this-carousel-id" data-slide="prev">&lsaquo;</a>
+    <a class="carousel-control right" href="#this-carousel-id" data-slide="next">&rsaquo;</a>
+</div>
+    /*<div>
       <div id="content-slider">
         <div id="slider" onMouseEnter={this.mouseOverHandler} onMouseOut={this.mouseOutHandler}>
-        
+
             <div id="mask">
             <ul>
             <li id="first" className="firstanimation">
@@ -73,7 +110,7 @@ render (){
             <div className="progress-bar"></div>
         </div>
       </div>
-    </div>
+    </div>*/
     )
   }
 })
