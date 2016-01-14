@@ -4,7 +4,8 @@ BucketList = React.createClass({
   getMeteorData() {
     return {
       sortedBucketItems: BucketItemsCollection.find({}, {sort: {createdAt: -1}}).fetch(),
-      currentUser: Meteor.user()
+      currentUser: Meteor.user(),
+      myImages: Images.find({}).fetch()
     }
   },
 
@@ -19,6 +20,12 @@ BucketList = React.createClass({
       return <BucketItemReact key={bucketObject._id} bucketitem={bucketObject} />;
     });
   },
+  // renderItemPicture() {
+  //   return this.data.my.map((bucketObject) => {
+  //     return <BucketItemReact key={bucketObject._id} bucketitem={bucketObject} />;
+  //   });
+  // },
+
 
   clearForm(){
     ReactDOM.findDOMNode(this.refs.title).value = ""
@@ -31,13 +38,21 @@ BucketList = React.createClass({
 
   handleSubmit(event) {
     event.preventDefault();
-
     var title = ReactDOM.findDOMNode(this.refs.title).value.trim();
     var description = ReactDOM.findDOMNode(this.refs.description).value.trim();
     var tags = ReactDOM.findDOMNode(this.refs.tags).value.trim();
     var category = ReactDOM.findDOMNode(this.refs.category).value.trim();
     var address = ReactDOM.findDOMNode(this.refs.address).value.trim();
     var rating = ReactDOM.findDOMNode(this.refs.rating).value.trim();
+
+    var pictureID = Session.get("photoID");
+    if(pictureID !== undefined){
+       var image_data = pictureID
+    } else {
+      var image_data = "No Image"
+    }
+    console.log("photoID::")
+    console.log(pictureID)
 
     BucketItemsCollection.insert({
       title: title,
@@ -46,12 +61,14 @@ BucketList = React.createClass({
       category: category,
       address: address,
       rating: rating,
+      image_id: image_data,
       owner: Meteor.userId(),
       username: Meteor.user().username,
       createdAt: new Date()
-    });
+    })
 
     this.clearForm();
+    ReactDOM.unmountComponentAtNode(document.getElementById("render-photo"));
     this.setState({addingItem: false})
   },
 
@@ -59,6 +76,7 @@ BucketList = React.createClass({
     this.setState({
       addingItem: true
     })
+  ReactDOM.render(<PhotoCapsule />, document.getElementById("render-photo"));
   },
 
   render() {
@@ -68,8 +86,10 @@ BucketList = React.createClass({
       return (
         <div className="bucketlist">
           <header>
-            <h1>Bucket List</h1>
+            <h1>My Bucket List</h1>
             <button onClick={this.addingNewItem}>Add a new item!</button>
+            <div id="render-photo"></div>
+
             {this.state.addingItem == true
             ? <form className="new-bucketitem" onSubmit={this.handleSubmit}>
 
@@ -79,7 +99,6 @@ BucketList = React.createClass({
                 ref="title"
                 placeholder="Type to add new item to your bucket list" />
             </p>
-
             <p>Description:
               <input
                 type="text"
@@ -124,6 +143,10 @@ BucketList = React.createClass({
                  <option value="5" >5</option>
               </select>
             </p>
+
+            <p>Picture: Dont forget to add a picture!
+            </p>
+
             <input
                   type="submit"
                   value="submit"/>
