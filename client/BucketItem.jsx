@@ -80,6 +80,7 @@ BucketItemReact = React.createClass({
 				}
 			}
 		)
+		this.setState({editing: false});
 	},
 
 	deleteThisBucketItem() {
@@ -193,8 +194,11 @@ BucketItemReact = React.createClass({
 				<div id="render-photo"></div>
 				<div id="picture-target"></div>
 
-				<button className="button" onClick={this.openForm}>Edit this item</button>
+				{this.state.editing == false
+				?	<button className="button" onClick={this.openForm}>Edit this item</button>
 
+				:	<button className="stopediting" onClick={this.closeForm}>Close Edit Form</button>
+				}
 				{(Meteor.user() !== null)
 				?
 					<button className="button" onClick={this.addToPersonalList}>Add to my Bucket List!</button>
@@ -305,7 +309,6 @@ BucketItemReact = React.createClass({
 					</p>
 
 						<input className="button" type="submit" value="Update This Item"/>
-						<button className="stopediting" onClick={this.closeForm}>Close Edit Form</button>
 					</form>
 					: null
 				}
