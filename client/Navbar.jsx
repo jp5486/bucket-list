@@ -60,15 +60,14 @@ Navbar = React.createClass({
 			      <a className="navbar-brand glyphicon glyphicon-fire" href="#"></a>
 			    </div>
 			    <div className="collapse navbar-collapse" id="myNavbar">
+
 			      <ul className="nav navbar-nav">
+			      <li role="presentation"><span id="render-login"></span></li>
 							<li className= "Active" role="presentation"><a href="#" onClick={this.renderHome}>Home</a></li>
 							<li role="presentation"><a href="#" onClick={this.renderBucketList}>Personal Bucket List</a></li>
 							<li role="presentation"><a href="#" onClick={this.renderEvents}>Events</a></li>
 							<li role="presentation"><a href="#" onClick={this.renderFriends}>Friends</a></li>
 			      </ul>
-			      <div className="nav navbar-nav navbar-right">
-			        <div id="render-login"></div>
-			      </div>
 			    </div>
 			  </div>
 			</nav>

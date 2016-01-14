@@ -17,9 +17,58 @@ AutoSlider = React.createClass({
     })
   },
 
+//   enqueue_my_scripts() {
+// wp_enqueue_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js', array('jquery'), '1.9.1', false); // adding in header
+// wp_enqueue_script( 'bootstrap-js', get_template_directory_uri().'/js/bootstrap.min.js', array('jquery'), true); // addition of 'get_template_directory_uri()'
+// },
+
+  componentDidMount(){
+    // this.enqueue_my_scripts();
+    $(document).ready(function(){
+      console.log('document is ready')
+      $('.carousel').carousel();
+    });
+  },
+
 render (){
   return (
-    <div>
+    
+    
+<div id="this-carousel-id" className="carousel slide">
+  <div className="carousel-inner">
+    <div className="item active"> 
+
+      <img src="https://images.unsplash.com/photo-1452723312111-3a7d0db0e024?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=d2caa73026ef83d5701e1d6d3f1957a6" alt="" />
+      <div className="carousel-caption">
+        <p>Caption text here</p>
+      </div>
+    </div>
+    <div className="item">
+      <img src="http://placehold.it/1200x480" alt="" />
+      <div className="carousel-caption">
+        <p>Caption text here</p>
+      </div>
+    </div>
+    <div className="item">
+      <img src="http://placehold.it/1200x480" alt="" />
+      <div className="carousel-caption">
+        <p>Caption text here</p>
+      </div>
+    </div>
+    <div className="item">
+      <img src="http://placehold.it/1200x480" alt="" />
+      <div className="carousel-caption">
+        <p>Caption text here</p>
+      </div>
+    </div>
+  </div>
+    <a className="carousel-control left" href="#this-carousel-id" data-slide="prev">&lsaquo;</a>
+    <a className="carousel-control right" href="#this-carousel-id" data-slide="next">&rsaquo;</a>
+</div>
+
+
+
+    /*<div>
       <div id="content-slider">
         <div id="slider">
           <div id="mask">
@@ -73,7 +122,7 @@ render (){
           <div className="progress-bar"></div>
         </div>
       </div>
-    </div>
+    </div>*/
     )
   }
 })
