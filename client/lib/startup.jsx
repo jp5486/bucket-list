@@ -3,6 +3,7 @@ Meteor.subscribe("userData");
 Meteor.subscribe("categories");
 Meteor.subscribe("allUserData");
 Meteor.subscribe("markers");
+Meteor.subscribe("events");
 Meteor.subscribe("images");
 
 Meteor.startup(function () {
