@@ -32,4 +32,8 @@ twbs:bootstrap
 
 
 npm-container
+mdg:camera
+cfs:standard-packages
+cfs:filesystem
 accounts-ui
+
