@@ -170,6 +170,14 @@ header .hide-completed {
   padding: 10px;
   border: solid 5px #c9c9c9;
   box-shadow: inset 0 0 0 1px #707070;
+  font-family: Verdana;
+  font-size: 1em;
+}
+
+.landing {
+   -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
 }
 
 button, .button {
