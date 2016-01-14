@@ -17,6 +17,7 @@ AutoSlider = React.createClass({
     })
   },
 
+
 render (){
   return (
     
