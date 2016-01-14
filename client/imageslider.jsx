@@ -1,18 +1,78 @@
 AutoSlider = React.createClass({
+  getInitialState() {
+    return {
+    hover: false
+    }
+  },
+
+  mouseOverHandler() {
+    this.setState({
+      hover: true
+    })
+  },
+
+  mouseOutHandler() {
+    this.setState({
+      hover: false
+    })
+  },
+
+  componentDidMount(){
+    $(document).ready(function(){
+      console.log('document is ready')
+      $('.carousel').carousel();
+    });
+  },
 
 render (){
   return (
-    <div className="container">
+    
+    
+<div id="this-carousel-id" className="carousel slide">
+  <div className="carousel-inner">
+    <div className="item active"> 
+
+      <img src="https://images.unsplash.com/photo-1452723312111-3a7d0db0e024?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=d2caa73026ef83d5701e1d6d3f1957a6" alt="" />
+      <div className="carousel-caption">
+        <p>Caption text here</p>
+      </div>
+    </div>
+    <div className="item">
+      <img src="http://placehold.it/1200x480" alt="" />
+      <div className="carousel-caption">
+        <p>Caption text here</p>
+      </div>
+    </div>
+    <div className="item">
+      <img src="http://placehold.it/1200x480" alt="" />
+      <div className="carousel-caption">
+        <p>Caption text here</p>
+      </div>
+    </div>
+    <div className="item">
+      <img src="http://placehold.it/1200x480" alt="" />
+      <div className="carousel-caption">
+        <p>Caption text here</p>
+      </div>
+    </div>
+  </div>
+    <a className="carousel-control left" href="#this-carousel-id" data-slide="prev">&lsaquo;</a>
+    <a className="carousel-control right" href="#this-carousel-id" data-slide="next">&rsaquo;</a>
+</div>
+
+
+
+    /*<div>
       <div id="content-slider">
         <div id="slider">
           <div id="mask">
           <ul>
           <li id="first" className="firstanimation">
           <a href="#">
-          <img src="http://oaktowner.com/wp-content/photos/meteor-shower.jpg" alt="Image"/>
+          <img src="https://images.unsplash.com/photo-1452723312111-3a7d0db0e024?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=d2caa73026ef83d5701e1d6d3f1957a6" alt="Image"/>
           </a>
           <div className="tooltip">
-          <h1></h1>
+          <h1>Welcome to BList</h1>
           </div>
           </li>
 
@@ -21,7 +81,7 @@ render (){
           <img src="https://images.unsplash.com/photo-1428434828181-9d110c490087?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=74f120a985f4e5a45dea5966f5dce182" alt="Image"/>
           </a>
           <div className="tooltip">
-          <h1></h1>
+          <h1>This is created for DBC final project</h1>
           </div>
           </li>
           
@@ -30,7 +90,7 @@ render (){
           <img src="https://images.unsplash.com/photo-1447522760800-59f967f9083e?crop=entropy&dpr=0.75&fit=crop&fm=jpg&h=1000&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1900" alt="Image"/>
           </a>
           <div className="tooltip">
-          <h1></h1>
+          <h1>We worked really hard on it</h1>
           </div>
           </li>
                       
@@ -39,7 +99,7 @@ render (){
           <img src="https://images.unsplash.com/photo-1428434828181-9d110c490087?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=74f120a985f4e5a45dea5966f5dce182" alt="Image"/>
           </a>
           <div className="tooltip">
-          <h1></h1>
+          <h1>and we a greater appreciation for todo list</h1>
           </div>
           </li>
                       
@@ -48,7 +108,7 @@ render (){
           <img src="https://images.unsplash.com/photo-1452509133926-2b180c6d6245?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=522dbd6dd5ef841dea730e25e3c19709" alt="Image"/>
           </a>
           <div className="tooltip">
-          <h1></h1>
+          <h1>Enjoy it!</h1>
           </div>
           </li>
           </ul>
@@ -56,12 +116,12 @@ render (){
           <div className="progress-bar"></div>
         </div>
       </div>
-    </div>
+    </div>*/
     )
   }
 })
 
-StaticlSlider = React.createClass({
+StaticSlider = React.createClass({
 	render (){
 		return (
 		<ul className="slides">
