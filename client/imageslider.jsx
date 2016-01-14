@@ -84,7 +84,7 @@ render (){
           <h1>This is created for DBC final project</h1>
           </div>
           </li>
-          
+
           <li id="third" className="thirdanimation">
           <a href="#">
           <img src="https://images.unsplash.com/photo-1447522760800-59f967f9083e?crop=entropy&dpr=0.75&fit=crop&fm=jpg&h=1000&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1900" alt="Image"/>
@@ -93,7 +93,7 @@ render (){
           <h1>We worked really hard on it</h1>
           </div>
           </li>
-                      
+
           <li id="fourth" className="fourthanimation">
           <a href="#">
           <img src="https://images.unsplash.com/photo-1428434828181-9d110c490087?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=74f120a985f4e5a45dea5966f5dce182" alt="Image"/>
@@ -102,7 +102,7 @@ render (){
           <h1>and we a greater appreciation for todo list</h1>
           </div>
           </li>
-                      
+
           <li id="fifth" className="fifthanimation">
           <a href="#">
           <img src="https://images.unsplash.com/photo-1452509133926-2b180c6d6245?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=522dbd6dd5ef841dea730e25e3c19709" alt="Image"/>
@@ -183,7 +183,7 @@ StaticSlider = React.createClass({
     <input type="radio" name="radio-btn" id="img-6" />
     <li className="slide-container">
         <div className="slide">
-					<img src="https://images.unsplash.com/photo-1428434828181-9d110c490087?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=74f120a985f4e5a45dea5966f5dce182"/>        
+					<img src="https://images.unsplash.com/photo-1428434828181-9d110c490087?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=74f120a985f4e5a45dea5966f5dce182"/>
         </div>
 		<div className="nav">
 			<label htmlFor="img-5" className="prev">&#x2039;</label>

@@ -1,5 +1,4 @@
 EventCategoryReact = React.createClass({
-  
   mixins: [ReactMeteorData],
 
   getMeteorData() {
@@ -10,8 +9,6 @@ EventCategoryReact = React.createClass({
 
   render() {
     return (
-
-
       <li className="Category Title">{this.props.thingWithTitle.title} </li>
     );
   }

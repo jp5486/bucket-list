@@ -14,7 +14,7 @@ BucketItemReact = React.createClass({
 			address: this.props.bucketitem.address,
 			rating: this.props.bucketitem.rating,
 			editing: false,
-
+			image_id: this.props.bucketitem.image_id,
 			username: this.props.bucketitem.username,
 			showDescription: false,
 			showAll: false
@@ -39,8 +39,24 @@ BucketItemReact = React.createClass({
 		var currentItem = BucketItemsCollection.find(this.bucketitem._id)
 	},
 
+	showPictureID(){
+		var currentPicture = BucketItemsCollection.find(this.bucketitem.image_id)
+	},
+
 	selectThisListItem(){
 		$("#"+this.props.bucketitem._id).addClass("selected")
+	},
+
+	returnUrl(){
+		var prefix = "/cfs/files/images/"
+		var token = "?token=eyJhdXRoVG9rZW4iOiJOTFBseGdpNWVBX0N6dUU1cGpLSHh6ZEdPM09kTzljakZEQndPNWY0QnpIIn0%3D"
+		var id = this.state.image_id
+		if (id == undefined){
+			var url = ""
+		} else {
+			var url = prefix + id + token
+		}
+		return (url)
 	},
 
 	updateThisBucketItem(event) {
@@ -51,12 +67,14 @@ BucketItemReact = React.createClass({
 		var newcategory = this.state.category.trim();
 		var newaddress = this.state.address.trim();
 		var newrating = this.state.rating.trim();
+		var newpicture = this.state.image_id.trim();
 		BucketItemsCollection.update(this.props.bucketitem._id, {$set : {
 					title: newtitle,
 					description: newdescription,
 					tags: newtags,
 					username: this.props.bucketitem.username,
 					category: newcategory,
+					image_id: newpicture,
 					address: newaddress,
 					rating: newrating,
 				}
@@ -66,6 +84,7 @@ BucketItemReact = React.createClass({
 
 	deleteThisBucketItem() {
 		BucketItemsCollection.remove(this.props.bucketitem._id);
+		Images.remove(this.state.bucketitem.image_id);
 	},
 
 	handleTitleChange(event){
@@ -92,12 +111,18 @@ BucketItemReact = React.createClass({
 		this.setState({rating: event.target.value})
 	},
 
-	openForm(event){
-		this.setState({editing: true})
+	handlePictureChange(event){
+		this.setState({image_id: Session.get('photoID')})
 	},
 
+	openForm(event){
+		this.setState({editing: true});
+	  ReactDOM.render(<PhotoCapsule />, document.getElementById("render-photo"));
+  },
+
 	closeForm(event) {
-		this.setState({editing: false})
+		this.setState({editing: false});
+    ReactDOM.unmountComponentAtNode(document.getElementById("render-photo"));
 	},
 
 
@@ -165,12 +190,16 @@ BucketItemReact = React.createClass({
 				<button className="delete" onClick={this.deleteThisBucketItem}>
 					&times;
 				</button>
+				<div id="render-photo"></div>
+				<div id="picture-target"></div>
+
 				<button onClick={this.openForm}>Edit this item</button>
 
 				{(Meteor.user() !== null)
 				?
 					<button onClick={this.addToPersonalList}>Add to my Bucket List!</button>
 				:null
+
 				}
 
 				<div onClick={this.toggleDescription}>
@@ -183,6 +212,7 @@ BucketItemReact = React.createClass({
 						<button onClick={this.toggleShowAll}>Show All Details</button>
 						<ul>
 							<li className="description">{this.props.bucketitem.description}</li>
+							<li className="picture">{this.props.bucketitem.picture}</li>
 						</ul>
 					</div>
 				:null
@@ -192,7 +222,6 @@ BucketItemReact = React.createClass({
 					?
 						<div>
 							<ul>
-
 								<li className="tags">{this.props.bucketitem.tags}</li>
 								<li className="category">{this.props.bucketitem.category}</li>
 								<li className="address">{this.props.bucketitem.address}</li>
@@ -211,8 +240,7 @@ BucketItemReact = React.createClass({
 							name="updatedText"
 							placeholder="Please don't leave blank"
 							onChange={this.handleTitleChange}
-							defaultValue={this.props.bucketitem.title}
-						/>
+							defaultValue={this.props.bucketitem.title} />
 					</p>
 	        <p>
 	          Description:
@@ -222,7 +250,6 @@ BucketItemReact = React.createClass({
 							onChange={this.handleDescriptionChange}
 							defaultValue={this.props.bucketitem.description}
               placeholder="Define Description Here" />
-
           </p>
           <p>
           	Tags:
@@ -272,6 +299,10 @@ BucketItemReact = React.createClass({
 						     <option value="5" >5</option>
 						  </select>
           </p>
+
+	        <p> Picture:
+	        <img src={this.returnUrl()} />
+					</p>
 
 						<input type="submit" value="Update This Item"/>
 						<button className="stopediting" onClick={this.closeForm}>Close Edit Form</button>

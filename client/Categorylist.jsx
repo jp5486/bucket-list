@@ -1,10 +1,8 @@
 CategoryListReact = React.createClass({
-
   mixins: [ReactMeteorData],
 
   propTypes: {
     thingWithTitle: React.PropTypes.object.isRequired
-
   },
 
   getMeteorData() {
@@ -12,7 +10,6 @@ CategoryListReact = React.createClass({
       allItems: BucketItemsCollection.find({category: this.props.thingWithTitle.title}).fetch()
     }
   },
-
 
   renderItems(){
     return this.data.allItems.map((item) => {
@@ -32,21 +29,19 @@ CategoryListReact = React.createClass({
 
   render() {
     return (
-
       <li className="Category-Title">
       <div onClick={this.toggleItems}>
         <p>{this.props.thingWithTitle.title}</p>
       </div>
-        {(this.state.showItems == true)
+      {(this.state.showItems == true)
         ?
         <div>
           <ul>
             {this.renderItems()}
            </ul>
         </div>
-        :null
-        }
-
+      :null
+      }
       </li>
     );
   }

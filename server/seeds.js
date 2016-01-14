@@ -16,6 +16,11 @@ Meteor.publish("userData", function () {
 Meteor.publish("allUserData", function () {
     return Meteor.users.find({}, {profile: {takenItems: 1}});
 });
+
+Meteor.publish('images',function(){
+  return Images.find({});
+});
+
 Meteor.startup(function () {
   if (CategoriesCollection.find().count() == 0) {
     CategoriesCollection.insert({title: "Education"});
@@ -27,73 +32,16 @@ Meteor.startup(function () {
     CategoriesCollection.insert({title: "Tourist"});
   };
 
+  //edit fields on Users Collection here
   Accounts.onCreateUser(function(options, user) {
     user.profile = options.profile ? options.profile : {};
-    user.profile.takenItems = [{name: "this is a test"}, {name: "this is also a test"}];
+
+    if (user.services.google !== undefined) {
+        user.profile.profile_picture = user.services.google.picture;
+    }
+    if (user.services.twitter !== undefined) {
+        user.twitter.profile_picture = user.services.twitter.profile_url;
+    }
     return user;
   });
-
-
-
-  // Accounts.onCreateUser(function(options, user) {
-  //   user.personalItems = [];
-  //   if (options.profile)
-  //     user.profile = options.profile;
-  //   return user;
-  // });
-
-  // Meteor.users.allow({
-  //  update: function(userId, user){
-  //    return user._id === Meteor.userId();
-  //    return user.personalItems === Meteor.userID().personalItems();
-  //  }
-  // });
-
-// Meteor.publish("userData", function () {
-//   if (this.userId) {
-    // return Meteor.users.find({_id: this.userId},
-//                              {fields: {personalItems: 1}});
-//   } else {
-//     this.ready();
-//   }
-// });
-
-
-  // if (BucketItemsCollection.find().count() == 0) {
-  //   BucketItemsCollection.insert(
-  //   {
-  //     title: "Run a Marathon",
-  //     category: "Sports",
-  //     description: "",
-  //     tags: [],
-  //     address: "",
-  //     rating: "",
-  //     users: {},
-  //     editing: false,
-  //     showDescription: false,
-  //     showAll: false
-  //   }
-  //   );
-  //   BucketItemsCollection.insert({
-  //     title: "Build an app in Meteor",
-  //     category: "Education",
-  //     description: "",
-  //     tags: [],
-  //     address: "",
-  //     rating: "",
-  //     editing: false,
-  //     showDescription: false,
-  //     showAll: false
-  //   });
-  //   BucketItemsCollection.insert({
-  //     title: "Finish a coding bootcamp",
-  //     category: "Education",
-  //     description: "",
-  //     tags: [],
-  //     address: "",
-  //     editing: false,
-  //     showDescription: false,
-  //     showAll: false
-  //   });
-  // }
 });
