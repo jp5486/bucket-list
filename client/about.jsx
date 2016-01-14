@@ -9,11 +9,9 @@ About = React.createClass({
 
 	render () {
 		return (
-			<div>
-				<p>Bucketlist is a tool for achieving your life goals.</p>
-				<p>You can explore thousands of great ideas.</p>
-				<p>See how others have achieved their goals.</p>
-				<p>Connect with friends and family.</p>
+			<div className="text-container">
+				<p> Bucketlist is a place for you to set your life’s goals and tell your story once they have been accomplished. You can explore great ideas, get inspiration from others, and see how they achieved their goals. Use Bucketlist to find interesting things to do when you travel. You can connect with family and friends and meet people with similar interests. 
+				</p>
 			</div>
 	  ) 
 	}

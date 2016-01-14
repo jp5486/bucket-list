@@ -11,8 +11,14 @@ Navbar = React.createClass({
 	renderHome (event) {
 		event.preventDefault();
 		this.hidePage();
-		ReactDOM.render(<BucketList />, document.getElementById('render-quad1'));
-    ReactDOM.render(<CategoriesReact />, document.getElementById("render-quad2"));
+		if(Meteor.user()==null){		
+			ReactDOM.render(<AutoSlider />, document.getElementById('render-quad1'))
+		ReactDOM.render(<HomeText />, document.getElementById('render-quad2'))
+			} else {
+			ReactDOM.render(<BucketList />, document.getElementById('render-quad1'));
+  	  ReactDOM.render(<CategoriesReact />, document.getElementById("render-quad2"));
+  	  ReactDOM.render(<Map />, document.getElementById("render-quad3"));
+  	}
 	},
 
   renderBucketList (event) {
@@ -20,14 +26,12 @@ Navbar = React.createClass({
 		this.hidePage();
 		ReactDOM.render(<BucketList />, document.getElementById('render-quad1'));
     // ReactDOM.render(<CategoriesReact />, document.getElementById("render-quad2"));
-
   },
 
 	renderEvents (event) {
 		event.preventDefault();
 		this.hidePage();
 		ReactDOM.render(<Events />, document.getElementById('render-quad2'));
-
 	},
 
 	renderFriends (event) {
@@ -47,9 +51,16 @@ Navbar = React.createClass({
 	// 		</nav>
 	// 	)
 	// }
+	renderLandingPage(event){
+		event.preventDefault();
+		this.hidePage();
+		ReactDOM.render(<AutoSlider />, document.getElementById('render-quad1'));
+		ReactDOM.render(<HomeText />, document.getElementById('render-quad2'));
+	},	
+
 	render (){
 		return (
-			<nav className="navbar navbar-inverse">
+			<nav className="navbar navbar-inverse navbar-fixed-top">
 			  <div className="container-fluid">
 			    <div className="navbar-header">
 			      <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -57,7 +68,7 @@ Navbar = React.createClass({
 			        <span className="icon-bar"></span>
 			        <span className="icon-bar"></span>
 			      </button>
-			      <a className="navbar-brand glyphicon glyphicon-fire" href="#"></a>
+			      <a onClick={this.renderLandingPage} className="navbar-brand glyphicon glyphicon-fire" href="#"></a>
 			    </div>
 			    <div className="collapse navbar-collapse" id="myNavbar">
 
@@ -65,7 +76,6 @@ Navbar = React.createClass({
 							<li className= "Active" role="presentation"><a href="#" onClick={this.renderHome}>Home</a></li>
 							<li role="presentation"><a href="#" onClick={this.renderBucketList}>Personal Bucket List</a></li>
 							<li role="presentation"><a href="#" onClick={this.renderEvents}>Events</a></li>
-							<li role="presentation"><a href="#" onClick={this.renderFriends}>Friends</a></li>
 			      </ul>
 			      	<span id="render-login" className="pull-right"></span>
 			    </div>

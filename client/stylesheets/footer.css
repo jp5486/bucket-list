@@ -1,0 +1,20 @@
+.footer {
+    position: fixed;
+    bottom: 0;
+    /*bottom-margin: 0px;*/
+    min-height: 50px;
+    /*border: 1px solid transparent;*/
+    clear: both;
+    height: 4em;
+    border: 1px solid transparent;
+}
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -4em;
+}
+
+#bot-margin{
+  margin-bottom: 0;
+}

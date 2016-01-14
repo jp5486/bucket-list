@@ -80,6 +80,7 @@ BucketItemReact = React.createClass({
 				}
 			}
 		)
+		this.setState({editing: false});
 	},
 
 	deleteThisBucketItem() {
@@ -186,20 +187,17 @@ BucketItemReact = React.createClass({
 	render() {
 		const itemClassName = this.props.bucketitem.checked ? "checked" : "";
 		return (
-			<li id={this.props.bucketitem._id}>
+			<li className="list" id={this.props.bucketitem._id}>
 				<button className="delete" onClick={this.deleteThisBucketItem}>
 					&times;
 				</button>
 				<div id="render-photo"></div>
 				<div id="picture-target"></div>
 
-				<button onClick={this.openForm}>Edit this item</button>
+				{this.state.editing == false
+				?	<button className="button" onClick={this.openForm}>Edit this item</button>
 
-				{(Meteor.user() !== null)
-				?
-					<button onClick={this.addToPersonalList}>Add to my Bucket List!</button>
-				:null
-
+				:	<button className="stopediting" onClick={this.closeForm}>Close Edit Form</button>
 				}
 
 				<div onClick={this.toggleDescription}>
@@ -211,8 +209,7 @@ BucketItemReact = React.createClass({
 					<div>
 						<button onClick={this.toggleShowAll}>Show All Details</button>
 						<ul>
-							<li className="description">{this.props.bucketitem.description}</li>
-							<li className="picture">{this.props.bucketitem.picture}</li>
+							<li className="description">Description: {this.props.bucketitem.description}</li>
 						</ul>
 					</div>
 				:null
@@ -223,9 +220,10 @@ BucketItemReact = React.createClass({
 						<div>
 							<ul>
 								<li className="tags">{this.props.bucketitem.tags}</li>
-								<li className="category">{this.props.bucketitem.category}</li>
-								<li className="address">{this.props.bucketitem.address}</li>
-								<li className="rating">{this.props.bucketitem.rating}</li>
+								<li className="category">Category: {this.props.bucketitem.category}</li>
+								<li className="address">Address: {this.props.bucketitem.address}</li>
+								<li className="rating">Rating: {this.props.bucketitem.rating}</li>
+								<li><img src={this.returnUrl()} /></li>
 							</ul>
 						</div>
 
@@ -304,8 +302,7 @@ BucketItemReact = React.createClass({
 	        <img src={this.returnUrl()} />
 					</p>
 
-						<input type="submit" value="Update This Item"/>
-						<button className="stopediting" onClick={this.closeForm}>Close Edit Form</button>
+						<input className="button" type="submit" value="Update This Item"/>
 					</form>
 					: null
 				}

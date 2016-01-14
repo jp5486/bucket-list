@@ -94,8 +94,8 @@
    left: 0px;
 }
 
-#slider-hover: li,
-#slider-hover: .progress-bar {
+#slider li: hover,
+#slider .progress-bar: hover {
   -webkit-animation-play-state: paused;
   -moz-animation-play-state: paused;
    animation-play-state: paused;

@@ -9,7 +9,7 @@ Credits = React.createClass({
 	
 	render () {
 		return (
-			<div>
+			<div className="text-container">
 				<ul>
 					<li><a href="https://www.meteor.com"><img className='meteor-logo' src='meteor.png' /></a></li>
 					<li><a href="https://www.mongodb.com"><img className='mongo-logo' src='mongodb.png' /></a></li>
@@ -17,6 +17,7 @@ Credits = React.createClass({
 					<li><a href="cordova.apache.org/"><img className='cordova-logo' src='cordova.png' /></a></li>
 					<li><a href="meteor.com/blaze">Blaze</a></li>
 					<li><a href="https://github.com"><img className='github-logo' src='github.jpg'/></a></li>
+					
 				</ul>
 			</div>
 	  ) 
