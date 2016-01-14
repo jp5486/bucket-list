@@ -12,7 +12,8 @@ Meteor.startup(function () {
 
   // ReactDOM.render(<StaticSlider />, document.getElementById("render-quad4"));
 
-  // ReactDOM.render(<AutoSlider />, document.getElementById("render-quad4"));
+
+  ReactDOM.render(<AutoSlider />, document.getElementById("render-quad4"));
 	// ReactDOM.render(<BucketList />, document.getElementById("render-quad1"));
 
   // ReactDOM.render(<Events />, document.getElementById("render-quad2"));

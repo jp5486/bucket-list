@@ -1,4 +1,4 @@
-AutoSlider = React.createClass({
+Carousel = React.createClass({
   getInitialState() {
     return {
     hover: false
@@ -18,7 +18,6 @@ AutoSlider = React.createClass({
   componentDidMount(){
     $(document).ready(function(){
       $('.carousel').carousel();
-      console.log('carousel')
     });
   },
 
@@ -56,7 +55,14 @@ render (){
     <a class="carousel-control left" href="#this-carousel-id" data-slide="prev">&lsaquo;</a>
     <a class="carousel-control right" href="#this-carousel-id" data-slide="next">&rsaquo;</a>
 </div>
-    /*<div>
+  )
+  }
+})
+
+AutoSlider = React.createClass({
+render (){
+    return (
+    <div>
       <div id="content-slider">
         <div id="slider">
           <div id="mask">
@@ -110,7 +116,7 @@ render (){
           <div className="progress-bar"></div>
         </div>
       </div>
-    </div>*/
+    </div>
     )
   }
 })
