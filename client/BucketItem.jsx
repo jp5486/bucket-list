@@ -199,12 +199,6 @@ BucketItemReact = React.createClass({
 
 				:	<button className="stopediting" onClick={this.closeForm}>Close Edit Form</button>
 				}
-				{(Meteor.user() !== null)
-				?
-					<button className="button" onClick={this.addToPersonalList}>Add to my Bucket List!</button>
-				:null
-
-				}
 
 				<div onClick={this.toggleDescription}>
 				<p className="title">{this.props.bucketitem.title}</p>
@@ -215,8 +209,7 @@ BucketItemReact = React.createClass({
 					<div>
 						<button onClick={this.toggleShowAll}>Show All Details</button>
 						<ul>
-							<li className="description">{this.props.bucketitem.description}</li>
-							<li className="picture">{this.props.bucketitem.picture}</li>
+							<li className="description">Description: {this.props.bucketitem.description}</li>
 						</ul>
 					</div>
 				:null
@@ -227,9 +220,10 @@ BucketItemReact = React.createClass({
 						<div>
 							<ul>
 								<li className="tags">{this.props.bucketitem.tags}</li>
-								<li className="category">{this.props.bucketitem.category}</li>
-								<li className="address">{this.props.bucketitem.address}</li>
-								<li className="rating">{this.props.bucketitem.rating}</li>
+								<li className="category">Category: {this.props.bucketitem.category}</li>
+								<li className="address">Address: {this.props.bucketitem.address}</li>
+								<li className="rating">Rating: {this.props.bucketitem.rating}</li>
+								<li><img src={this.returnUrl()} /></li>
 							</ul>
 						</div>
 
