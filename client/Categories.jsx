@@ -15,7 +15,7 @@ CategoriesReact = React.createClass({
 
   render (){
     return (   
-        <div className= "Events">
+        <div className= "text-container">
           <ul>
             <h3 className="Category"> {this.renderCategories()} 
             </h3>

@@ -147,17 +147,18 @@ BucketList = React.createClass({
             <p>Picture: Dont forget to add a picture!
             </p>
 
-            <input
+            <input className="button"
                   type="submit"
                   value="submit"/>
             </form>
             : null
             }
           </header>
-
+          <div className="text-container">
           <ul>
             {this.renderBucketItems()}
           </ul>
+          </div>
         </div>
       );
     }

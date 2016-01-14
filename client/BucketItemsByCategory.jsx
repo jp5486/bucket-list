@@ -7,7 +7,7 @@ propTypes: {
 
 render () {
 	return (
-		<li>{this.props.bucketItem.title}</li>
+		<li className="list">{this.props.bucketItem.title}</li>
 	) 
 }
 
