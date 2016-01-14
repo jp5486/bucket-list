@@ -186,7 +186,7 @@ BucketItemReact = React.createClass({
 	render() {
 		const itemClassName = this.props.bucketitem.checked ? "checked" : "";
 		return (
-			<li id={this.props.bucketitem._id}>
+			<li className="list" id={this.props.bucketitem._id}>
 				<button className="delete" onClick={this.deleteThisBucketItem}>
 					&times;
 				</button>

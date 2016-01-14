@@ -154,10 +154,11 @@ BucketList = React.createClass({
             : null
             }
           </header>
-
+          <div className="text-container">
           <ul>
             {this.renderBucketItems()}
           </ul>
+          </div>
         </div>
       );
     }
