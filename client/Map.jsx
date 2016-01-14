@@ -39,21 +39,6 @@ Map = React.createClass({
     });
   },
 
-  codeAddress () {
-    var address = document.getElementById("address").value;
-    geocoder.geocode( {'address': address}, function(results, status) {
-      if (status == google.maps.GeocoderStatus.OK) {
-        map.setCenter(results[0].geometry.location);
-        var marker = new google.maps.Marker({
-          map: map,
-          position: results[0].geometry.location
-        });
-      } else {
-        alert("Geocode was not successful for the following reason: " + status);
-      }
-    });
-  },
-
   getLocation () {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(this.initialize);
@@ -81,8 +66,36 @@ Map = React.createClass({
     return new google.maps.LatLng(props.mapCenterLat, props.mapCenterLng);
   },
 
+  render () {
+    return (
+      <div>
+        <div id="map-gic"></div>
+        < DisplayEventForm />
+      </div>
+
+    )
+    }
+});
+
+
+var EventForm = React.createClass({
   handleChange: function(event) {
     this.setState({value: event.target.value.substr(0, 140)});
+  },
+
+  codeAddress () {
+    var address = document.getElementById("address").value;
+    geocoder.geocode( {'address': address}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        map.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location
+        });
+      } else {
+        alert("Geocode was not successful for the following reason: " + status);
+      }
+    });
   },
 
   addLocation (event) {
@@ -95,48 +108,54 @@ Map = React.createClass({
     console.log(MarkersList);
   },
 
-  showEvents () {
-    var allEvents = MarkersList.find();
-    console.log("One event::");
-    console.log(allEvents.count);
-    for(i=0;i<allEvents.count();i++)
-    {
-      console.log("Current Event::")
-      console.log(currentEvent)
-      var currentEvent = allEvents[i]
-      '<h1>' + currentEvent.name + '</h1>' +
-      '<p>Address: ' + currentEvent + '</p>' +
-      '<button className="delete">Delete</button>'
-    }
+  render: function() {
+    return (
+      <form onSubmit= {this.addLocation}>
+        {this.props.children}
+      </form>
+    );
+  }
+});
+
+EventForm.Input = React.createClass({
+  render() {
+    return <input id={this.props.inputid} type="text" ref={this.props.inputref} onChange={this.handleChange} />
+  }
+});
+
+EventForm.Label = React.createClass({
+  render() {
+    return(<label>{this.props.labeltext}</label>)
+  }
+});
+
+EventForm.SubmitBut = React.createClass({
+  render() {
+      return(<input type="submit" value={this.props.submitvalue} />)
+  }
+});
+
+var DisplayEventForm = React.createClass({
+
+  addEvent () {
+    var eventPropsVar = {}
+    var Form = EventForm;
+    return (
+      <Form>
+        <Form.Label labeltext={"Location Name: "} />
+        <Form.Input inputid="locationName"inputref="location" />
+        <Form.Label labeltext="Address" />
+        <Form.Input inputid="address" inputref="address" />
+        <Form.SubmitBut submitvalue="Add Location" />
+      </Form>
+    );
   },
 
   render () {
     return (
-          <div>
-            <div id='map-gic'></div>
-            <div className="addEventForm">
-              <form onSubmit= {this.addLocation}>
-                <p>Location Name: </p>
-                <input
-                  id="locationName"
-                  type="text"
-                  onChange= {this.handleChange}
-                  ref="location"
-                ></input>
-                <p>Address</p>
-                <input
-                  id="address"
-                  type="text"
-                  onChange= {this.handleChange}
-                  ref="address"
-                ></input>
-                <input type="submit" value="Add Location"></input>
-              </form>
-            </div>
-            <div className="listed-events">
-              {this.showEvents}
-            </div>
-        </div>
-        );
-    }
+      <div id="eventbox">
+        <this.addEvent/>
+      </div>
+    );
+  }
 });
