@@ -16,6 +16,8 @@ Navbar = React.createClass({
 			} else {
 			ReactDOM.render(<BucketList />, document.getElementById('render-quad1'));
   	  ReactDOM.render(<CategoriesReact />, document.getElementById("render-quad2"));
+  	  ReactDOM.render(<Map />, document.getElementById("render-quad3"));
+
   	}
 	},
 
