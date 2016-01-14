@@ -8,26 +8,30 @@ Navbar = React.createClass({
 		ReactDOM.unmountComponentAtNode(document.getElementById("render-quad4"))
 	},
 
-	renderHome () {
+	renderHome (event) {
+		event.preventDefault();
 		this.hidePage();
 		ReactDOM.render(<BucketList />, document.getElementById('render-quad1'));
     ReactDOM.render(<CategoriesReact />, document.getElementById("render-quad2"));
 	},
 
-  renderBucketList () {
+  renderBucketList (event) {
+  	event.preventDefault();
 		this.hidePage();
 		ReactDOM.render(<BucketList />, document.getElementById('render-quad1'));
     // ReactDOM.render(<CategoriesReact />, document.getElementById("render-quad2"));
 
   },
 
-	renderEvents () {
+	renderEvents (event) {
+		event.preventDefault();
 		this.hidePage();
 		ReactDOM.render(<Events />, document.getElementById('render-quad2'));
 
 	},
 
-	renderFriends () {
+	renderFriends (event) {
+		event.preventDefault();
 		this.hidePage();
 	},
 
@@ -56,15 +60,14 @@ Navbar = React.createClass({
 			      <a className="navbar-brand glyphicon glyphicon-fire" href="#"></a>
 			    </div>
 			    <div className="collapse navbar-collapse" id="myNavbar">
+
 			      <ul className="nav navbar-nav">
 							<li className= "Active" role="presentation"><a href="#" onClick={this.renderHome}>Home</a></li>
 							<li role="presentation"><a href="#" onClick={this.renderBucketList}>Personal Bucket List</a></li>
 							<li role="presentation"><a href="#" onClick={this.renderEvents}>Events</a></li>
 							<li role="presentation"><a href="#" onClick={this.renderFriends}>Friends</a></li>
 			      </ul>
-			      <div className="nav navbar-nav navbar-right">
-			        <div id="render-login"></div>
-			      </div>
+			      	<span id="render-login" className="pull-right"></span>
 			    </div>
 			  </div>
 			</nav>

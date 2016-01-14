@@ -5,7 +5,8 @@
  border: 5px solid #eaeaea;
  box-shadow: 1px 1px 5px rgba(0,0,0,0.7);
  /*height: 320px;*/
- width: 100%;
+ width: 75%;
+ max-width: 900px;
  /*width: 960px;*/
  height: 100%;
  margin: 40px auto 0;
@@ -35,33 +36,33 @@
 }
 
 #slider li.firstanimation {
-	-moz-animation:cycle 35s linear infinite;	
-	-webkit-animation:cycle 35s linear infinite;
-	 animation: cycle 35s linear infinite;
+	-moz-animation:cycle 25s linear infinite;	
+	-webkit-animation:cycle 25s linear infinite;
+	 animation: cycle 25s linear infinite;
 }
 
 #slider li.secondanimation {
-	-moz-animation:cycle 35s linear infinite;	
-	-webkit-animation:cycle 35s linear infinite;
-   animation: cycletwo 35s linear infinite;
+	-moz-animation:cycle 25s linear infinite;	
+	-webkit-animation:cycle 25s linear infinite;
+   animation: cycletwo 25s linear infinite;
 }
 
 #slider li.thirdanimation {
-	-moz-animation:cycle 35s linear infinite;	
-	-webkit-animation:cycle 35s linear infinite;
-   animation: cyclethree 35s linear infinite;
+	-moz-animation:cycle 25s linear infinite;	
+	-webkit-animation:cycle 25s linear infinite;
+   animation: cyclethree 25s linear infinite;
 }
 
 #slider li.fourthanimation {
-	-moz-animation:cycle 35s linear infinite;	
-	-webkit-animation:cycle 35s linear infinite;
-   animation: cyclefour 35s linear infinite;
+	-moz-animation:cycle 25s linear infinite;	
+	-webkit-animation:cycle 25s linear infinite;
+   animation: cyclefour 25s linear infinite;
 }
 
 #slider li.fifthanimation {
-	-moz-animation:cycle 35s linear infinite;	
-	-webkit-animation:cycle 35s linear infinite;
-   animation: cyclefive 35s linear infinite;
+	-moz-animation:cycle 25s linear infinite;	
+	-webkit-animation:cycle 25s linear infinite;
+   animation: cyclefive 25s linear infinite;
 }
 
 #slider .tooltip {
@@ -93,8 +94,8 @@
    left: 0px;
 }
 
-#slider: hover li,
-#slider: hover .progress-bar {
+#slider-hover: li,
+#slider-hover: .progress-bar {
   -webkit-animation-play-state: paused;
   -moz-animation-play-state: paused;
    animation-play-state: paused;
@@ -106,9 +107,9 @@
 	 width: 680px;
 	 height: 5px;
 	 background: #000;
-   -moz-animation:fullexpand 35s ease-out infinite;
-	 -webkit-animation:fullexpand 35s ease-out infinite;
-   animation: fullexpand 35s ease-out infinite;
+   -moz-animation:fullexpand 25s ease-out infinite;
+	 -webkit-animation:fullexpand 25s ease-out infinite;
+   animation: fullexpand 25s ease-out infinite;
 }
 
 @keyframes fullexpand {
