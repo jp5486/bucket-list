@@ -17,6 +17,7 @@ Credits = React.createClass({
 					<li><a href="cordova.apache.org/"><img className='cordova-logo' src='cordova.png' /></a></li>
 					<li><a href="meteor.com/blaze">Blaze</a></li>
 					<li><a href="https://github.com"><img className='github-logo' src='github.jpg'/></a></li>
+					
 				</ul>
 			</div>
 	  ) 

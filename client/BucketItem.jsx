@@ -193,11 +193,11 @@ BucketItemReact = React.createClass({
 				<div id="render-photo"></div>
 				<div id="picture-target"></div>
 
-				<button onClick={this.openForm}>Edit this item</button>
+				<button className="button" onClick={this.openForm}>Edit this item</button>
 
 				{(Meteor.user() !== null)
 				?
-					<button onClick={this.addToPersonalList}>Add to my Bucket List!</button>
+					<button className="button" onClick={this.addToPersonalList}>Add to my Bucket List!</button>
 				:null
 
 				}
@@ -304,7 +304,7 @@ BucketItemReact = React.createClass({
 	        <img src={this.returnUrl()} />
 					</p>
 
-						<input type="submit" value="Update This Item"/>
+						<input className="button" type="submit" value="Update This Item"/>
 						<button className="stopediting" onClick={this.closeForm}>Close Edit Form</button>
 					</form>
 					: null
