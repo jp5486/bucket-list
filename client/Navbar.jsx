@@ -8,26 +8,30 @@ Navbar = React.createClass({
 		ReactDOM.unmountComponentAtNode(document.getElementById("render-quad4"))
 	},
 
-	renderHome () {
+	renderHome (event) {
+		event.preventDefault();
 		this.hidePage();
 		ReactDOM.render(<BucketList />, document.getElementById('render-quad1'));
     ReactDOM.render(<CategoriesReact />, document.getElementById("render-quad2"));
 	},
 
-  renderBucketList () {
+  renderBucketList (event) {
+  	event.preventDefault();
 		this.hidePage();
 		ReactDOM.render(<BucketList />, document.getElementById('render-quad1'));
     // ReactDOM.render(<CategoriesReact />, document.getElementById("render-quad2"));
 
   },
 
-	renderEvents () {
+	renderEvents (event) {
+		event.preventDefault();
 		this.hidePage();
 		ReactDOM.render(<Events />, document.getElementById('render-quad2'));
 
 	},
 
-	renderFriends () {
+	renderFriends (event) {
+		event.preventDefault();
 		this.hidePage();
 	},
 

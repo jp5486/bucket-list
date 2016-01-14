@@ -7,25 +7,27 @@ Footer = React.createClass({
 		ReactDOM.unmountComponentAtNode(document.getElementById("render-quad4"))
 	},
 	
-	renderAbout () {
+	renderAbout (event) {
+		event.preventDefault();
 		this.hidePage();
 		ReactDOM.render(<About />, document.getElementById('render-quad1'));
 	},
 
-	renderCredits () {
+	renderCredits (event) {
+		event.preventDefault();
 		this.hidePage();
 		ReactDOM.render(<Credits />, document.getElementById('render-quad1'));
 	},
 
 	render () {
 		return (
-			<nav className="footer">
-				<ul className="nav nav-tabs">
-					<li role="presentation"><a href="#" onClick={this.renderAbout}>About</a></li>
-					<li role="presentation"><a href="#" onClick={this.renderCredits}>Credits</a></li>
-					<li role="presentation"><a href="https://github.com/jp5486/bucket-list"><img src='GitHubLogo.png' /></a></li>
-				</ul>
-			</nav>			
+			<div id="footer">
+				<div className="navbar navbar-default navbar-bottom">
+					<a href="#" className="navbar-text pull-left" onClick={this.renderAbout}>About</a>
+					<a href="#" className="navbar-text pull-left" onClick={this.renderCredits}>Credits</a>
+					<a className="navbar-text pull-right" href="https://github.com/jp5486/bucket-list"> Check us out on <img id="github-link" src='GitHubLogo.png' /></a>
+				</div>
+			</div>			
 
 	  ) 
 	}
