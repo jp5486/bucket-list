@@ -27,7 +27,6 @@ email
 meteorhacks:ssr
 accounts-base
 check
-accounts-ui
 dburles:google-maps
 twbs:bootstrap
 
@@ -36,3 +35,5 @@ npm-container
 mdg:camera
 cfs:standard-packages
 cfs:filesystem
+accounts-ui
+
