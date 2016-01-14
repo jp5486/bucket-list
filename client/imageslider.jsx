@@ -18,12 +18,13 @@ AutoSlider = React.createClass({
   componentDidMount(){
     $(document).ready(function(){
       $('.carousel').carousel();
+      console.log('carousel')
     });
   },
 
 render (){
   return (
-    <div id="this-carousel-id" class="carousel slide">
+  <div id="this-carousel-id" class="carousel slide">
   <div class="carousel-inner">
     <div class="item active">
       <img src="https://images.unsplash.com/photo-1452723312111-3a7d0db0e024?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=d2caa73026ef83d5701e1d6d3f1957a6" alt="" />
