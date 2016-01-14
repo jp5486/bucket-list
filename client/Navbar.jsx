@@ -62,12 +62,13 @@ Navbar = React.createClass({
 			    <div className="collapse navbar-collapse" id="myNavbar">
 
 			      <ul className="nav navbar-nav">
-			      <li role="presentation"><span id="render-login"></span></li>
+
 							<li className= "Active" role="presentation"><a href="#" onClick={this.renderHome}>Home</a></li>
 							<li role="presentation"><a href="#" onClick={this.renderBucketList}>Personal Bucket List</a></li>
 							<li role="presentation"><a href="#" onClick={this.renderEvents}>Events</a></li>
 							<li role="presentation"><a href="#" onClick={this.renderFriends}>Friends</a></li>
 			      </ul>
+			      	<span id="render-login" className="pull-right"></span>
 			    </div>
 			  </div>
 			</nav>
