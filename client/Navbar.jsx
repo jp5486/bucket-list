@@ -62,7 +62,6 @@ Navbar = React.createClass({
 			    <div className="collapse navbar-collapse" id="myNavbar">
 
 			      <ul className="nav navbar-nav">
-
 							<li className= "Active" role="presentation"><a href="#" onClick={this.renderHome}>Home</a></li>
 							<li role="presentation"><a href="#" onClick={this.renderBucketList}>Personal Bucket List</a></li>
 							<li role="presentation"><a href="#" onClick={this.renderEvents}>Events</a></li>
