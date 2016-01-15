@@ -9,6 +9,9 @@ Meteor.publish("categories", function () {
 Meteor.publish("markers", function () {
   return MarkersList.find();
 });
+Meteor.publish("events", function () {
+  return MarkersList.find();
+});
 Meteor.publish("userData", function () {
     return Meteor.users.find({_id: this.userId},
         {fields: {public: 1}});

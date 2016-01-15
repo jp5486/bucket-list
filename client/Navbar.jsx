@@ -6,17 +6,19 @@ Navbar = React.createClass({
 		ReactDOM.unmountComponentAtNode(document.getElementById("render-quad2"))
 		ReactDOM.unmountComponentAtNode(document.getElementById("render-quad3"))
 		ReactDOM.unmountComponentAtNode(document.getElementById("render-quad4"))
+		ReactDOM.unmountComponentAtNode(document.getElementById("render-home"))
+
 	},
 
 	renderHome (event) {
 		event.preventDefault();
 		this.hidePage();
-		if(Meteor.user()==null){		
+		if(Meteor.user()==null){
 			ReactDOM.render(<AutoSlider />, document.getElementById('render-quad1'))
 		ReactDOM.render(<HomeText />, document.getElementById('render-quad2'))
 			} else {
 			ReactDOM.render(<BucketList />, document.getElementById('render-quad1'));
-  	  ReactDOM.render(<CategoriesReact />, document.getElementById("render-quad2"));
+  	  // ReactDOM.render(<CategoriesReact />, document.getElementById("render-quad2"));
   	  ReactDOM.render(<Map />, document.getElementById("render-quad3"));
   	}
 	},
@@ -49,9 +51,9 @@ Navbar = React.createClass({
 	renderLandingPage(event){
 		event.preventDefault();
 		this.hidePage();
-		ReactDOM.render(<AutoSlider />, document.getElementById('render-quad1'));
+		ReactDOM.render(<AutoSlider />, document.getElementById('render-home'));
 		ReactDOM.render(<HomeText />, document.getElementById('render-quad2'));
-	},	
+	},
 
 	render (){
 		return (
@@ -70,7 +72,7 @@ Navbar = React.createClass({
 			      <ul className="nav navbar-nav">
 							<li className= "Active" role="presentation"><a href="#" onClick={this.renderHome}>Home</a></li>
 							<li role="presentation"><a href="#" onClick={this.renderBucketList}>Personal Bucket List</a></li>
-							<li role="presentation"><a href="#" onClick={this.renderEvents}>Events</a></li>
+							<li role="presentation"><a href="#" onClick={this.renderEvents}>Map</a></li>
 			      </ul>
 			      	<span id="render-login" className="pull-right"></span>
 			    </div>
