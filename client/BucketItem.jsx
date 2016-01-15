@@ -305,7 +305,7 @@ BucketItemReact = React.createClass({
           </p>
 
 	        <p> Picture:
-	        <img src={this.returnUrl()} />
+	        <img className="picture" src={this.returnUrl()} />
 					</p>
 
 						<input className="button" type="submit" value="Update This Item"/>
