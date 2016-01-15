@@ -1,0 +1,1 @@
+CategoriesCollection = new Mongo.Collection("categories");
