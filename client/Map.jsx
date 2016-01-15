@@ -17,10 +17,7 @@ Map = React.createClass({
     map = new google.maps.Map(document.getElementById("map-gic"),
         mapOptions);
 
-    var infoWindowContent =   '<div class="info_content">' +
-                              '<h3>Title Here</h3>' +
-                              '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente totam exercitationem molestiae possimus.</p>' +
-                              '</div>';
+    var infoWindowContent =   '<div class="info_content">' + "test" + '</div>';
 
     var infoWindow = new google.maps.InfoWindow({
       content: infoWindowContent
@@ -71,6 +68,10 @@ Map = React.createClass({
         anchor: new google.maps.Point(17, 34),
         scaledSize: new google.maps.Size(25, 25)
       };
+
+      google.maps.event.addListener(marker, 'click', function() {
+      infoWindow.open(map, marker);
+      });
 
       // Create a marker for each place.
       markers.push(new google.maps.Marker({
