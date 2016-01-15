@@ -20,6 +20,9 @@ body {
   font-size: 14px;
 }
 
+.bucketlist p {
+  font-weight: bold;
+}
 
 .picture {
   height: 70px;

@@ -99,7 +99,7 @@ BucketList = React.createClass({
 
                 type="text"
                 ref="title"
-                placeholder="Type to add new item to your bucket list" />
+                placeholder="Add title" />
             </p>
             <p>Description:
               <input 
@@ -107,7 +107,7 @@ BucketList = React.createClass({
 
                 type="text"
                 ref="description"
-                placeholder="Type to add new item to your bucket list" />
+                placeholder="Add description" />
             </p>
             <p>Tags:
               <input 
@@ -115,7 +115,7 @@ BucketList = React.createClass({
 
                 type="text"
                 ref="tags"
-                placeholder="Type to add new item to your bucket list" />
+                placeholder="Add tags" />
             </p>
               <p>Category:
                <select
@@ -137,7 +137,7 @@ BucketList = React.createClass({
 
                 type="text"
                 ref="address"
-                placeholder="Type to add new item to your bucket list" />
+                placeholder="Add address" />
             </p>
             <p>Rating:
               <select
