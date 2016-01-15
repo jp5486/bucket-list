@@ -17,10 +17,7 @@ Map = React.createClass({
     map = new google.maps.Map(document.getElementById("map-gic"),
         mapOptions);
 
-    var infoWindowContent =   '<div class="info_content">' +
-                              '<h3>Title Here</h3>' +
-                              '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente totam exercitationem molestiae possimus.</p>' +
-                              '</div>';
+    var infoWindowContent =   '<div class="info_content">' + "test" + '</div>';
 
     var infoWindow = new google.maps.InfoWindow({
       content: infoWindowContent
@@ -37,20 +34,61 @@ Map = React.createClass({
     google.maps.event.addListener(marker, 'click', function() {
       infoWindow.open(map, marker);
     });
-  },
 
-  codeAddress () {
-    var address = document.getElementById("address").value;
-    geocoder.geocode( {'address': address}, function(results, status) {
-      if (status == google.maps.GeocoderStatus.OK) {
-        map.setCenter(results[0].geometry.location);
-        var marker = new google.maps.Marker({
-          map: map,
-          position: results[0].geometry.location
-        });
+    var input = document.getElementById('pac-input');
+    var searchBox = new google.maps.places.SearchBox(input);
+    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+    map.addListener('bounds_changed', function() {
+      searchBox.setBounds(map.getBounds());
+    });
+
+    var markers = [];
+
+    searchBox.addListener('places_changed', function() {
+      var places = searchBox.getPlaces();
+
+      if (places.length == 0) {
+      return;
+    }
+
+    // Clear out the old markers.
+    markers.forEach(function(marker) {
+      marker.setMap(null);
+    });
+    markers = [];
+
+    // For each place, get the icon, name and location.
+    var bounds = new google.maps.LatLngBounds();
+    places.forEach(function(place) {
+      var icon = {
+        url: place.icon,
+        size: new google.maps.Size(71, 71),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(17, 34),
+        scaledSize: new google.maps.Size(25, 25)
+      };
+
+      google.maps.event.addListener(marker, 'click', function() {
+      infoWindow.open(map, marker);
+      });
+
+      // Create a marker for each place.
+      markers.push(new google.maps.Marker({
+        map: map,
+        icon: icon,
+        title: place.name,
+        position: place.geometry.location
+      }));
+
+      if (place.geometry.viewport) {
+        // Only geocodes have viewport.
+        bounds.union(place.geometry.viewport);
       } else {
-        alert("Geocode was not successful for the following reason: " + status);
+        bounds.extend(place.geometry.location);
       }
+      });
+      map.fitBounds(bounds);
     });
   },
 
@@ -72,7 +110,6 @@ Map = React.createClass({
 
   componentDidMount: function (rootNode) {
     this.getLocation();
-    var marker = new google.maps.Marker({position: this.mapCenterLatLng(), title: 'Hi', map: map});
     this.setState({map: map});
   },
 
@@ -81,8 +118,37 @@ Map = React.createClass({
     return new google.maps.LatLng(props.mapCenterLat, props.mapCenterLng);
   },
 
+  render () {
+    return (
+      <div>
+        <input id="pac-input" className="controls" type="text" placeholder="Search Box"></input>
+        <div id="map-gic"></div>
+        < DisplayEventForm />
+      </div>
+
+    )
+    }
+});
+
+
+var EventForm = React.createClass({
   handleChange: function(event) {
     this.setState({value: event.target.value.substr(0, 140)});
+  },
+
+  codeAddress () {
+    var address = document.getElementById("address").value;
+    geocoder.geocode( {'address': address}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        map.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location
+        });
+      } else {
+        alert("Geocode was not successful for the following reason: " + status);
+      }
+    });
   },
 
   addLocation (event) {
@@ -95,48 +161,54 @@ Map = React.createClass({
     console.log(MarkersList);
   },
 
-  showEvents () {
-    var allEvents = MarkersList.find();
-    console.log("One event::");
-    console.log(allEvents.count);
-    for(i=0;i<allEvents.count();i++)
-    {
-      console.log("Current Event::")
-      console.log(currentEvent)
-      var currentEvent = allEvents[i]
-      '<h1>' + currentEvent.name + '</h1>' +
-      '<p>Address: ' + currentEvent + '</p>' +
-      '<button className="delete">Delete</button>'
-    }
+  render: function() {
+    return (
+      <form onSubmit= {this.addLocation}>
+        {this.props.children}
+      </form>
+    );
+  }
+});
+
+EventForm.Input = React.createClass({
+  render() {
+    return <input id={this.props.inputid} type="text" ref={this.props.inputref} onChange={this.handleChange} />
+  }
+});
+
+EventForm.Label = React.createClass({
+  render() {
+    return(<label>{this.props.labeltext}</label>)
+  }
+});
+
+EventForm.SubmitBut = React.createClass({
+  render() {
+      return(<input type="submit" value={this.props.submitvalue} />)
+  }
+});
+
+var DisplayEventForm = React.createClass({
+
+  addEvent () {
+    var eventPropsVar = {}
+    var Form = EventForm;
+    return (
+      <Form>
+        <Form.Label labeltext={"Location Name: "} />
+        <Form.Input inputid="locationName"inputref="location" />
+        <Form.Label labeltext="Address" />
+        <Form.Input inputid="address" inputref="address" />
+        <Form.SubmitBut submitvalue="Add Location" />
+      </Form>
+    );
   },
 
   render () {
     return (
-          <div>
-            <div id='map-gic'></div>
-            <div className="addEventForm">
-              <form onSubmit= {this.addLocation}>
-                <p>Location Name: </p>
-                <input
-                  id="locationName"
-                  type="text"
-                  onChange= {this.handleChange}
-                  ref="location"
-                ></input>
-                <p>Address</p>
-                <input
-                  id="address"
-                  type="text"
-                  onChange= {this.handleChange}
-                  ref="address"
-                ></input>
-                <input type="submit" value="Add Location"></input>
-              </form>
-            </div>
-            <div className="listed-events">
-              {this.showEvents}
-            </div>
-        </div>
-        );
-    }
+      <div id="eventbox">
+        <this.addEvent/>
+      </div>
+    );
+  }
 });
