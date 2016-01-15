@@ -91,25 +91,31 @@ BucketList = React.createClass({
             <div id="render-photo"></div>
 
             {this.state.addingItem == true
-            ? <form className="new-bucketitem" onSubmit={this.handleSubmit}>
+            ? <form className="new-bucketitem form-group" onSubmit={this.handleSubmit}>
 
             <p>Title:
-              <input
+              <input 
+               className="form-control"
+
                 type="text"
                 ref="title"
-                placeholder="Type to add new item to your bucket list" />
+                placeholder="Add title" />
             </p>
             <p>Description:
-              <input
+              <input 
+               className="form-control"
+
                 type="text"
                 ref="description"
-                placeholder="Type to add new item to your bucket list" />
+                placeholder="Add description" />
             </p>
             <p>Tags:
-              <input
+              <input 
+               className="form-control"
+
                 type="text"
                 ref="tags"
-                placeholder="Type to add new item to your bucket list" />
+                placeholder="Add tags" />
             </p>
               <p>Category:
                <select
@@ -126,10 +132,12 @@ BucketList = React.createClass({
                 </select>
             </p>
               <p>Address:
-              <input
+              <input 
+               className="form-control"
+
                 type="text"
                 ref="address"
-                placeholder="Type to add new item to your bucket list" />
+                placeholder="Add address" />
             </p>
             <p>Rating:
               <select
@@ -147,7 +155,8 @@ BucketList = React.createClass({
             <p>Picture: Dont forget to add a picture!
             </p>
 
-            <input className="button"
+            <input 
+             className="button"
                   type="submit"
                   value="submit"/>
             </form>

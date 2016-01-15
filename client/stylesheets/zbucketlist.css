@@ -5,21 +5,29 @@
 body {
   font-family: sans-serif;
   /*background-color: #315481;*/
-  /*background-image: linear-gradient(to bottom, #315481, #918e82 100%);*/
+  background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #cde6f9),color-stop(1, #81a8cb));
   background-attachment: fixed;
-  padding-top: 50px;
+  padding-top: 60px;
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   background-repeat: no-repeat;
-  background-size: cover;
-  background: url('background.jpeg');
   /*padding: 0;*/
   margin: 0;
 
   font-size: 14px;
+}
+
+.bucketlist p {
+  font-weight: bold;
+}
+
+.picture {
+  height: 210px;
+  width: 300px;
+
 }
 
 #github-link {
@@ -59,8 +67,8 @@ body {
 
 
 header {
-  background: #d2edf4;
-  background-image: linear-gradient(to bottom, #d0edf5, #e1e5f0 100%);
+  /*background: #d2edf4;*/
+  /*background-image: linear-gradient(to bottom, #d0edf5, #e1e5f0 100%);*/
   padding: 20px 15px 15px 15px;
   position: relative;
 }

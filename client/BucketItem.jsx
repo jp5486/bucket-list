@@ -223,7 +223,7 @@ BucketItemReact = React.createClass({
 								<li className="category">Category: {this.props.bucketitem.category}</li>
 								<li className="address">Address: {this.props.bucketitem.address}</li>
 								<li className="rating">Rating: {this.props.bucketitem.rating}</li>
-								<li><img src={this.returnUrl()} /></li>
+								<li><img className="picture" src={this.returnUrl()} /></li>
 							</ul>
 						</div>
 
@@ -231,9 +231,11 @@ BucketItemReact = React.createClass({
 
 				}
 				{(this.state.editing == true)
-					? <form className="editform" onSubmit={this.updateThisBucketItem}>
+					? <form className="editform form-group" onSubmit={this.updateThisBucketItem}>
 					<p> Title:
 						<input
+						className="form-control"
+
 							type="text"
 							name="updatedText"
 							placeholder="Please don't leave blank"
@@ -243,6 +245,8 @@ BucketItemReact = React.createClass({
 	        <p>
 	          Description:
             <input
+            className="form-control"
+
               type="text"
               ref="description"
 							onChange={this.handleDescriptionChange}
@@ -252,6 +256,8 @@ BucketItemReact = React.createClass({
           <p>
           	Tags:
             <input
+            className="form-control"
+
               type="text"
               ref="tags"
               onChange={this.handleTagsChange}
@@ -277,6 +283,8 @@ BucketItemReact = React.createClass({
           </p>
             <p>Address:
             <input
+            className="form-control"
+
               type="text"
               ref="address"
               onChange={this.handleAddressChange}
@@ -299,10 +307,11 @@ BucketItemReact = React.createClass({
           </p>
 
 	        <p> Picture:
-	        <img src={this.returnUrl()} />
+	        <img className="picture" src={this.returnUrl()} />
 					</p>
 
-						<input className="button" type="submit" value="Update This Item"/>
+						<input
+						 className="button" type="submit" value="Update This Item"/>
 					</form>
 					: null
 				}
