@@ -1,17 +1,36 @@
-#Bucket List - Final Project- _Dev Bootcamp_
-###Copperheads 2016
+## Overview
 
-####Jeremy Powell - https://github.com/jp5486
+ * This is a bucket list application made using Meteor with React.js.
+ * It supports image uploading and has a map provided with the Google Maps API.
+ * Not a commercial app.
 
-####Joe Marion Woot - https://github.com/JoeMarion
+## Contributors
 
-####Issac Lee - https://github.com/SynnisterDomini
+* ####Jeremy Powell - https://github.com/jp5486
 
-####Kai Huang - https://github.com/huangkc
+* ####Joe Marion Woot - https://github.com/JoeMarion
 
+* ####Isaac Lee - https://github.com/isaachlee
 
+* ####Kai Huang - https://github.com/huangkc
 
-## Mock Ups --------------------------
+## MVP
+
+* Bucket list populates and can be edited
+* Bucket list items can be categorized, rated, and sorted
+* Facebook/Google OAUTH Implemented
+
+## Ver 1.0 update
+* Google Maps API functional (Creates a searchable map)
+* Image Uploads Supported via Amazong S3 uplodaing
+
+## In Development
+* Google Maps automatically populates with markers related to your currently selected bucket list app
+* Event API integration to find nearby events
+* Mobile application via Cordova
+* Refactoring code
+
+## Mock Ups
 
 ### Home Mock Up
 
