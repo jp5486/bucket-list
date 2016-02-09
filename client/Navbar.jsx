@@ -72,7 +72,8 @@ Navbar = React.createClass({
 			      <ul className="nav navbar-nav">
 							<li className= "Active" role="presentation"><a href="#" onClick={this.renderHome}>Home</a></li>
 							<li role="presentation"><a href="#" onClick={this.renderBucketList}>Personal Bucket List</a></li>
-							<li role="presentation"><a href="#" onClick={this.renderEvents}>Map</a></li>
+							// <li role="presentation"><a href="#" onClick={this.renderEvents}></a></li>
+
 			      </ul>
 			      	<span id="render-login" className="pull-right"></span>
 			    </div>
