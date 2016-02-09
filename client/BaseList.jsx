@@ -81,7 +81,7 @@ BucketList = React.createClass({
 
   render() {
     if (Meteor.user() == null) {
-      return ( <div className="text-container"> Please log In to create a personal bucket List</div> )
+      return ( <div className="text-container"> Please sign in to create a personal bucket list</div> )
     } else {
       return (
         <div className="bucketlist">
