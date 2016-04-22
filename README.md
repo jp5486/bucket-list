@@ -8,7 +8,7 @@
 
 * ####Jeremy Powell - https://github.com/jp5486
 
-* ####Joe Marion Woot - https://github.com/JoeMarion
+* ####Joe Marion - https://github.com/JoeMarion
 
 * ####Isaac Lee - https://github.com/isaachlee
 
