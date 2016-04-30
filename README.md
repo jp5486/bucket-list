@@ -38,7 +38,7 @@
 * Mobile application via Cordova
 * Refactoring code
 
-## Mock Ups --------------------------
+## Mock Ups
 
 ### Home Mock Up
 
