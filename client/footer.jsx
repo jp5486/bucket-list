@@ -27,7 +27,7 @@ Footer = React.createClass({
 				<div id="bot-margin" className="navbar navbar-default navbar-bottom">
 					<a href="#" className="navbar-text pull-left" onClick={this.renderAbout}>About</a>
 					<a href="#" className="navbar-text pull-left" onClick={this.renderCredits}>Credits</a>
-					<a className="navbar-text pull-right" href="https://github.com/jp5486/bucket-list"> Check us out on <img id="github-link" src='GitHubLogo.png' /></a>
+					<a className="navbar-text pull-right" href="https://github.com/huangkc/bucket-list/tree/development"> Check us out on <img id="github-link" src='GitHubLogo.png' /></a>
 				</div>
 			</div>
 
